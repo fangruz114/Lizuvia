@@ -21,6 +21,7 @@ def seed():
     seed_orders()
     seed_order_products()
     seed_reviews()
+    seed_carts()
     # Add other seed functions here
 
 
@@ -33,4 +34,5 @@ def undo():
     undo_orders()
     undo_order_products()
     undo_reviews()
+    undo_carts()
     # Add other undo functions here
