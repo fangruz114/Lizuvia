@@ -21,6 +21,7 @@ function NavBar() {
             </div>
             <div className='nav-menu-cover'>
                 <div className='nav-bottom'>
+                    <NavLink to='/products' activeClassName='active-navlink'>All Products</NavLink>
                     <NavLink to='/products/categories/furniture' activeClassName='active-navlink'>Furniture</NavLink>
                     <NavLink to='/products/categories/outdoor' activeClassName='active-navlink'>{`Outdoor & Garden`}</NavLink>
                     <NavLink to='/products/categories/bedding' activeClassName='active-navlink'>Bedding</NavLink>
