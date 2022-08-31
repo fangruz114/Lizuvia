@@ -1,0 +1,75 @@
+.home-page-footer {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    border-top: 1px solid black;
+    width: 100%;
+    box-sizing: border-box;
+    font-size: 18px;
+    background-color: rgb(229, 227, 221);
+    margin-top: 20px;
+    border: none;
+    position: sticky;
+    bottom: 0;
+}
+
+.home-page-about {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    box-sizing: border-box;
+    width: 50%;
+    height: 100%;
+    gap: 2rem;
+}
+
+.source-code {
+    color: #000000;
+    text-decoration: none;
+}
+
+.source-code:hover {
+    cursor: pointer;
+    color: gray;
+}
+
+.home-page-about .fa-github {
+    font-size: 24px;
+}
+
+.connect-with-us-container {
+    border-left: 1px solid black;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    width: 50%;
+    gap: 2em;
+}
+
+.connect-with-us {
+    font-weight: 600;
+}
+
+.connect-with-us-container .linkedin-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+}
+
+.developer-name {
+    font-size: 1rem;
+    letter-spacing: 0.2px;
+}
+
+.fa-linkedin {
+    font-size: 1.75rem;
+}
+
+.fa-linkedin:hover {
+    cursor: pointer;
+    opacity: 0.7;
+}
