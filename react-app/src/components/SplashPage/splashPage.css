@@ -1,0 +1,130 @@
+.main-page {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.cozy-season-sec {
+    height: auto;
+    width: 100%;
+    max-width: 1680px;
+    min-height: 500px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    animation: swap 7s infinite;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+@keyframes swap {
+    0% {
+        background-image: url(https://assets.pbimgs.com/pbimgs/rk/images/dp/wcm/202234/0051/drayton-recycled-glass-8-light-chandelier-z.jpg)
+    }
+
+    33% {
+        background-image: url(https://assets.pbimgs.com/pbimgs/rk/images/dp/wcm/202224/0169/carmel-square-arm-upholstered-sofa-z.jpg)
+    }
+
+    67% {
+        background-image: url(https://assets.pbimgs.com/pbimgs/rk/images/dp/wcm/202213/0318/carmel-square-arm-upholstered-sofa-z.jpg)
+    }
+
+    100% {
+        background-image: url(https://assets.pbimgs.com/pbimgs/rk/images/dp/wcm/202234/0051/drayton-recycled-glass-8-light-chandelier-z.jpg)
+    }
+}
+
+.living-room-essentials {
+    height: auto;
+    width: 100%;
+    max-width: 1680px;
+}
+
+.cozy-season-sec>p {
+    color: white;
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 70px;
+    font-weight: 100;
+    margin: 20px;
+    position: relative;
+    top: -50px;
+}
+
+.cozy-season-sec a {
+    text-decoration: none;
+    background-color: black;
+    color: white;
+    width: 150px;
+    height: 30px;
+    text-align: center;
+    font-size: 13px;
+    padding: 5px 0;
+    box-sizing: border-box;
+}
+
+.homepage-subtitle {
+    width: 100%;
+    max-width: 1680px;
+    height: auto;
+}
+
+.fall-bed,
+.conversation-starters,
+.room-for-all {
+    max-width: 1680px;
+    width: 100%;
+    height: auto;
+}
+
+.two-bedding,
+.throw-cabinet,
+.two-dining {
+    display: flex;
+    flex-direction: row;
+    max-width: 1680px;
+    width: 100%;
+    height: auto;
+    margin: 60px 0 0 0;
+}
+
+.two-bedding img,
+.throw-cabinet img,
+.two-halloween img,
+.two-dining img {
+    width: 50%;
+}
+
+.decorating-must-have,
+.home-for-holidays,
+.two-halloween,
+.fireside-lounge {
+    display: flex;
+    flex-direction: row;
+    max-width: 1680px;
+    width: 100%;
+    height: auto;
+    margin: 0;
+}
+
+.decorating-must-have .left {
+    width: 75%;
+    height: auto;
+    margin-right: 10px;
+}
+
+.decorating-must-have .left img {
+    width: 100%;
+    height: auto;
+}
+
+.decorating-must-have .right {
+    width: 25%;
+}
+
+.decorating-must-have .right img {
+    width: 100%;
+    height: auto;
+}
