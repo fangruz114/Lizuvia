@@ -15,7 +15,7 @@ WORKDIR /var/wwww
 # Copy all the files from your repo to the working directory
 COPY . .
 # Copy the built react app (it's built for us) from the
-COPY /react-app/build/* app/static
+COPY /react-app/build/* app/static/
 # /react-app/build/ directory into your flasks app/static directory
 
 # Run the next two python install commands with PIP

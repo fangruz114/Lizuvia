@@ -24,50 +24,47 @@ class Product(db.Model):
     reviews = db.relationship(
         "Review", back_populates='product', cascade='all, delete')
 
+    def to_dict(self):
+        return {
+            'id': self.id,
+            'name': self.name,
+            'category': self.category,
+            'description': self.description,
+            'bulletPoints': self.bullet_points,
+            'colors': self.colors,
+            'dimension': self.dimension,
+            'price': self.price,
+            'userId': self.user_id,
+            'user': self.user.to_dict_no_additions(),
+            'carts': [c.to_dict_no_additions() for c in self.carts],
+            'orderProducts': [op.to_dict_no_additions() for op in self.order_products],
+            'images': [i.to_dict_no_additions() for i in self.images],
+            'reviews': [r.to_dict_no_additions() for r in self.reviews]
+        }
 
-def to_dict(self):
-    return {
-        'id': self.id,
-        'name': self.name,
-        'category': self.category,
-        'description': self.description,
-        'bulletPoints': self.bullet_points,
-        'colors': self.colors,
-        'dimension': self.dimension,
-        'price': self.price,
-        'userId': self.user_id,
-        'user': self.user.to_dict_no_additions(),
-        'carts': [c.to_dict_no_additions() for c in self.carts],
-        'orderProducts': [op.to_dict_no_additions() for op in self.order_products],
-        'images': [i.to_dict_no_additions() for i in self.images],
-        'reviews': [r.to_dict_no_additions() for r in self.reviews]
-    }
+    def to_dict_with_images(self):
+        return {
+            'id': self.id,
+            'name': self.name,
+            'category': self.category,
+            'description': self.description,
+            'bulletPoints': self.bullet_points,
+            'colors': self.colors,
+            'dimension': self.dimension,
+            'price': self.price,
+            'userId': self.user_id,
+            'images': [i.to_dict_no_additions() for i in self.images],
+        }
 
-
-def to_dict_with_images(self):
-    return {
-        'id': self.id,
-        'name': self.name,
-        'category': self.category,
-        'description': self.description,
-        'bulletPoints': self.bullet_points,
-        'colors': self.colors,
-        'dimension': self.dimension,
-        'price': self.price,
-        'userId': self.user_id,
-        'images': [i.to_dict_no_additions() for i in self.images],
-    }
-
-
-def to_dict_no_additions(self):
-    return {
-        'id': self.id,
-        'name': self.name,
-        'category': self.category,
-        'description': self.description,
-        'bulletPoints': self.bullet_points,
-        'colors': self.colors,
-        'dimension': self.dimension,
-        'price': self.price,
-        'userId': self.user_id,
-    }
+    def to_dict_no_additions(self):
+        return {
+            'id': self.id,
+            'name': self.name,
+            'category': self.category,
+            'description': self.description,
+            'bulletPoints': self.bullet_points,
+            'colors': self.colors,
+            'dimension': self.dimension,
+            'price': self.price,
+            'userId': self.user_id,
+        }
