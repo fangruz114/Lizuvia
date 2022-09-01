@@ -21,13 +21,14 @@ function NavBar() {
             </div>
             <div className='nav-menu-cover'>
                 <div className='nav-bottom'>
-                    <NavLink to='/products/category/furniture' activeClassName='active-navlink'>furniture</NavLink>
-                    <NavLink to='/products/category/outdoor' activeClassName='active-navlink'>{`Outdoor && Garden`}</NavLink>
-                    <NavLink to='/products/category/bedding' activeClassName='active-navlink'>Bedding</NavLink>
-                    <NavLink to='/products/category/bath' activeClassName='active-navlink'>Bath</NavLink>
-                    <NavLink to='/products/category/decor' activeClassName='active-navlink'>{`Pillows & Decor`}</NavLink>
-                    <NavLink to='/products/category/mirrors-wall-art' activeClassName='active-navlink'>{`Art & Mirrors`}</NavLink>
-                    <NavLink to='/products/category/halloween' activeClassName='active-navlink'>Halloween</NavLink>
+                    <NavLink to='/products' activeClassName='active-navlink'>All Products</NavLink>
+                    <NavLink to='/products/categories/furniture' activeClassName='active-navlink'>Furniture</NavLink>
+                    <NavLink to='/products/categories/outdoor' activeClassName='active-navlink'>{`Outdoor & Garden`}</NavLink>
+                    <NavLink to='/products/categories/bedding' activeClassName='active-navlink'>Bedding</NavLink>
+                    <NavLink to='/products/categories/bath' activeClassName='active-navlink'>Bath</NavLink>
+                    <NavLink to='/products/categories/decor' activeClassName='active-navlink'>{`Pillows & Decor`}</NavLink>
+                    <NavLink to='/products/categories/mirrors-wall-art' activeClassName='active-navlink'>{`Art & Mirrors`}</NavLink>
+                    <NavLink to='/products/categories/halloween' activeClassName='active-navlink'>Halloween</NavLink>
                 </div>
             </div>
             <div className='nav-promo'>

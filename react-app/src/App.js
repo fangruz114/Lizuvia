@@ -10,6 +10,9 @@ import HomePage from './components/SplashPage';
 import User from './components/User';
 import { authenticate } from './store/session';
 import Footer from './components/Footer';
+import ProductListPage from './components/ProductListPage';
+import ProductsByCategory from './components/ProductListPage/ProductsByCategory';
+import ProductDetailPage from './components/ProductDetailpage';
 
 function App() {
   const [loaded, setLoaded] = useState(false);
@@ -36,12 +39,21 @@ function App() {
         <Route path='/sign-up' exact={true}>
           <SignUpForm />
         </Route>
-        <ProtectedRoute path='/users/:userId' exact={true} >
-          <User />
-        </ProtectedRoute>
         <Route path='/' exact={true} >
           <HomePage />
         </Route>
+        <Route path='/products' exact={true} >
+          <ProductListPage />
+        </Route>
+        <Route path='/products/categories/:category'>
+          <ProductsByCategory />
+        </Route>
+        <Route path='/products/:id'>
+          <ProductDetailPage />
+        </Route>
+        <ProtectedRoute path='/users/:userId' exact={true} >
+          <User />
+        </ProtectedRoute>
       </Switch>
       <Footer />
     </BrowserRouter>
