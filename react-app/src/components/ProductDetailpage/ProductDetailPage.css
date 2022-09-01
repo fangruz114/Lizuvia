@@ -69,7 +69,7 @@
 
 .detail-page-right-panel {
     width: 39%;
-    height: 500px;
+    height: 900px;
     display: flex;
     flex-direction: column;
     align-items: flex-start;
@@ -128,4 +128,33 @@
     font-size: 15px;
     font-weight: bold;
     margin: 22px 0;
+}
+
+.detail-page-description-title,
+.detail-page-dimensions-title {
+    width: 100%;
+    height: 46px;
+    font-size: 14px;
+    font-weight: bold;
+    box-sizing: border-box;
+    padding: 12px 0 12px 28px;
+    background-color: rgb(245, 244, 242);
+    border-top: 1px solid rgb(207, 202, 193);
+    border-bottom: 1px solid rgb(207, 202, 193);
+    display: flex;
+    align-items: center;
+    margin-top: 20px;
+}
+
+.detail-page-description {
+    margin: 8px 8px 0px 28px;
+    font-size: 14px;
+    line-height: 20px;
+}
+
+.detail-page-bullet-points,
+.detail-page-dimensions {
+    margin: 8px 8px 0px 8px;
+    font-size: 14px;
+    line-height: 20px;
 }
