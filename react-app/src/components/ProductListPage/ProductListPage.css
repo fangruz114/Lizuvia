@@ -1,6 +1,7 @@
 .product-list-cover {
     display: flex;
     justify-content: center;
+    height: 100vh;
 }
 
 .product-list {
