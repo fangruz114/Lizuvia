@@ -28,6 +28,7 @@ export const getProducts = () => async dispatch => {
     const res = await fetch("/api/products");
     const data = await res.json();
     if (res.ok) {
+        console.log('data', data.products)
         await dispatch(loadProducts(data.products));
     }
     return data;
@@ -102,18 +103,19 @@ const productReducer = (state = initialState, action) => {
     let newState;
     switch (action.type) {
         case LOAD_PRODUCTS:
-            newState = Object.assign({});
+            newState = {};
             action.payload.map(product => newState[product.id] = product);
+            return newState;
         case LOAD_CURRENT_PRODUCT:
-            newState = object.assign({}, state);
+            newState = Object.assign({}, state);
             newState[action.payload.id] = action.payload;
             return newState;
         case CREATE_PRODUCT:
-            newState = object.assign({}, state);
+            newState = Object.assign({}, state);
             newState[action.payload.id] = action.payload;
             return newState;
         case DELETE_PRODUCT:
-            newState = object.assign({}, state);
+            newState = Object.assign({}, state);
             delete newState[action.id];
             return newState;
         default:

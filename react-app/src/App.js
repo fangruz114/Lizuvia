@@ -10,6 +10,8 @@ import HomePage from './components/SplashPage';
 import User from './components/User';
 import { authenticate } from './store/session';
 import Footer from './components/Footer';
+import ProductListPage from './components/ProductListPage';
+import ProductsByCategory from './components/ProductListPage/ProductsByCategory';
 
 function App() {
   const [loaded, setLoaded] = useState(false);
@@ -41,6 +43,12 @@ function App() {
         </ProtectedRoute>
         <Route path='/' exact={true} >
           <HomePage />
+        </Route>
+        <Route path='/products' exact={true} >
+          <ProductListPage />
+        </Route>
+        <Route path='/products/categories/:category'>
+          <ProductsByCategory />
         </Route>
       </Switch>
       <Footer />
