@@ -3,6 +3,7 @@ import { useSelector } from 'react-redux';
 import { useState, useEffect } from 'react';
 import SearchBar from '../SearchBar';
 import './NavBar.css';
+import LogoutButton from '../auth/LogoutButton';
 
 function NavBar() {
     const user = useSelector(state => state.session.user);
@@ -15,13 +16,14 @@ function NavBar() {
                 <li><Link to={`/users/${user.id}`}>My Account</Link></li>
                 <li><Link to={`/users/${user.id}/orders`}>My Orders</Link></li>
                 <li><Link to={`/users/${user.id}/products`}>My Products</Link></li>
+                <li><LogoutButton /></li>
             </ul>
         )
     } else {
         sessionLinks = (
             <ul className='profile-drop-down'>
-                <li><Link to={`/login`}>Log In</Link></li>
-                <li><Link to={`/signup`}>Sign Up</Link></li>
+                <li><Link to={`/login`}>Sign In</Link></li>
+                <li><Link to={`/sign-up`}>Create an account</Link></li>
             </ul>
         )
     }
@@ -52,15 +54,15 @@ function NavBar() {
                     <img src="https://i.imgur.com/WNDYJVi.png" alt='lizuvia-logo' />
                 </Link>
                 <div className='nav-profile-cart'>
-                    <div className='nav-orders-signin' onClick={() => setShowMenu(!showMenu)}>
+                    <a href='#' className='nav-orders-signin' onClick={() => setShowMenu(!showMenu)}>
                         <p>{user ? `Orders & Account` : `Orders & Sign In`}</p>
                         <i className="fa-solid fa-user"></i>
-                    </div>
-                    {showMenu && (
-                        <>
-                            {sessionLinks}
-                        </>
-                    )}
+                    </a>
+                    {/* {showMenu && ( */}
+                    <>
+                        {sessionLinks}
+                    </>
+                    {/* )} */}
                     <div className='nav-cart-items'>
                         <i className="fa-solid fa-cart-shopping"></i>
                         <p>{`0`}</p>
