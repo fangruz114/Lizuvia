@@ -1,6 +1,7 @@
 .detail-page-cover {
     width: 100%;
     height: auto;
+    min-height: 100vh;
     display: flex;
     justify-content: center;
     color: rgb(1, 1, 1);
