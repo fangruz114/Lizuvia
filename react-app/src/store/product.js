@@ -28,7 +28,6 @@ export const getProducts = () => async dispatch => {
     const res = await fetch("/api/products");
     const data = await res.json();
     if (res.ok) {
-        console.log('data', data.products)
         await dispatch(loadProducts(data.products));
     }
     return data;
@@ -43,10 +42,22 @@ export const getOneProduct = (id) => async dispatch => {
     return data;
 }
 
+export const getUserProducts = () => async dispatch => {
+    const res = await fetch(`/api/users/products`);
+    const data = await res.json();
+    if (res.ok) {
+        await dispatch(loadProducts(data.products));
+    }
+    return data;
+}
+
 export const addProduct = (newProduct) => async dispatch => {
-    const { name, category, description, price, url1, url2, url3, url4, url5 } = newProduct
+    const { name, category, description, price, url1, url2, url3, url4, url5 } = newProduct;
     const response = await fetch('/api/products', {
         method: "POST",
+        headers: {
+            "Content-Type": "application/json",
+        },
         body: JSON.stringify({
             name,
             category,
@@ -57,33 +68,49 @@ export const addProduct = (newProduct) => async dispatch => {
             url3,
             url4,
             url5,
-        })
+        }),
     });
-    const data = await response.json();
     if (response.ok) {
+        const data = await response.json();
         await dispatch(createProduct(data));
+        return null;
+    } else if (response.status < 500) {
+        const data = await response.json();
+        if (data.errors) {
+            return data.errors;
+        }
+    } else {
+        return ["An error occurred. Please try again."];
     }
-    return data;
 }
 
 export const editProduct = (id, product) => async dispatch => {
     const { name, category, description, price, url1 } = product
     const response = await fetch(`/api/products/${id}`, {
         method: "PUT",
+        headers: {
+            "Content-Type": "application/json",
+        },
         body: JSON.stringify({
             name,
             category,
             description,
             price,
             url1,
-        })
+        }),
     });
-
-    const data = await response.json();
     if (response.ok) {
+        const data = await response.json();
         await dispatch(createProduct(data));
+        return null;
+    } else if (response.status < 500) {
+        const data = await response.json();
+        if (data.errors) {
+            return data.errors;
+        }
+    } else {
+        return ["An error occurred. Please try again."];
     }
-    return data;
 }
 
 export const removeProduct = (id) => async dispatch => {

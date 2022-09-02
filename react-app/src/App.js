@@ -6,13 +6,15 @@ import SignUpForm from './components/auth/SignUpForm';
 import NavBar from './components/Navigation';
 import ProtectedRoute from './components/auth/ProtectedRoute';
 import HomePage from './components/SplashPage';
-// import UsersList from './components/UsersList';
-import User from './components/User';
+import User from './components/UserProfilePage';
 import { authenticate } from './store/session';
 import Footer from './components/Footer';
 import ProductListPage from './components/ProductListPage';
 import ProductsByCategory from './components/ProductListPage/ProductsByCategory';
 import ProductDetailPage from './components/ProductDetailpage';
+import UserProductList from './components/UserProductList';
+import AddProductForm from './components/ProductForm/AddProductForm';
+import EditProductForm from './components/ProductForm/EditProductForm';
 
 function App() {
   const [loaded, setLoaded] = useState(false);
@@ -48,11 +50,20 @@ function App() {
         <Route path='/products/categories/:category'>
           <ProductsByCategory />
         </Route>
-        <Route path='/products/:id'>
+        <Route path='/products/:id' exact={true}>
           <ProductDetailPage />
         </Route>
+        <ProtectedRoute path='/users/:userId/products'>
+          <UserProductList />
+        </ProtectedRoute>
+        <ProtectedRoute path='/products/:id/edit'>
+          <EditProductForm />
+        </ProtectedRoute>
         <ProtectedRoute path='/users/:userId' exact={true} >
           <User />
+        </ProtectedRoute>
+        <ProtectedRoute path='/new-products' exact={true} >
+          <AddProductForm />
         </ProtectedRoute>
       </Switch>
       <Footer />

@@ -50,10 +50,27 @@ function ProductDetailPage() {
                             <p className='detail-page-product-price'>${product.price}</p>
                             <div className='detail-page-purchase-quantity'>
                                 <button onClick={decreaseQuantity}>-</button>
-                                <input type="number" value={quantity} min='0' step='1' onChange={e => setQuantity(e.target.value)} />
+                                <input type="number" value={quantity} min="0" step="1" disabled onChange={e => setQuantity(e.target.value)} />
                                 <button onClick={() => setQuantity(quantity + 1)}>+</button>
                             </div>
                             <button className='add-to-cart-btn'>ADD TO CART</button>
+                            <p className='detail-page-description-title'>OVERVIEW</p>
+                            <p className='detail-page-description'>{product.description}</p>
+                            {product.bulletPoints && (
+                                <ul className='detail-page-bullet-points'>
+                                    {product.bulletPoints.split(',').map(bp => (
+                                        <li key={product.id}>{bp}</li>
+                                    ))}
+                                </ul>
+                            )}
+                            <p className='detail-page-dimensions-title'>DIMENSIONS</p>
+                            {product.dimension && (
+                                <ul className='detail-page-dimensions'>
+                                    {product.dimension.split(',').map(dimension => (
+                                        <li key={product.id}>{dimension}</li>
+                                    ))}
+                                </ul>
+                            )}
                         </div>
                     </div>
                 </div>
