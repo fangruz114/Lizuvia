@@ -1,6 +1,13 @@
 from flask_wtf import FlaskForm
 from wtforms import StringField, SelectField, DecimalField
-from wtforms.validators import DataRequired, Length, NumberRange
+from wtforms.validators import DataRequired, Length, NumberRange, ValidationError
+
+
+def url_verify(form, field):
+    url = field.data
+    if url and not url.endswith('.jpg') and not url.endswith('.png') and url.endswith('.gif'):
+        raise ValidationError(
+            'Invalid image url. Image urls must end with .jpg, .png, or .gif.')
 
 
 class ProductForm(FlaskForm):
@@ -11,8 +18,8 @@ class ProductForm(FlaskForm):
     description = StringField('description', validators=[DataRequired()])
     price = DecimalField('price', validators=[DataRequired(), NumberRange(
         min=0, message='price has to be greater than 0')])
-    url1 = StringField('url1', validators=[DataRequired()])
-    url2 = StringField('url2')
-    url3 = StringField('url3')
-    url4 = StringField('url4')
-    url5 = StringField('url5')
+    url1 = StringField('url1', validators=[DataRequired(), url_verify])
+    url2 = StringField('url2', validators=[url_verify])
+    url3 = StringField('url3', validators=[url_verify])
+    url4 = StringField('url4', validators=[url_verify])
+    url5 = StringField('url5', validators=[url_verify])

@@ -64,11 +64,13 @@ function ProductDetailPage() {
                                 </ul>
                             )}
                             <p className='detail-page-dimensions-title'>DIMENSIONS</p>
-                            <ul className='detail-page-dimensions'>
-                                {product.dimension.split(',').map(dimension => (
-                                    <li key={product.id}>{dimension}</li>
-                                ))}
-                            </ul>
+                            {product.dimension && (
+                                <ul className='detail-page-dimensions'>
+                                    {product.dimension.split(',').map(dimension => (
+                                        <li key={product.id}>{dimension}</li>
+                                    ))}
+                                </ul>
+                            )}
                         </div>
                     </div>
                 </div>

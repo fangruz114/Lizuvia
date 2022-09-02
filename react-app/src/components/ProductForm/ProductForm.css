@@ -1,0 +1,75 @@
+.product-form-wrapper {
+    width: 100%;
+    min-height: 80vh;
+    display: flex;
+    justify-content: center;
+}
+
+.product-form-page {
+    width: 100%;
+    max-width: 1440px;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 40px 0px;
+}
+
+.product-form-title {
+    display: flex;
+    flex-direction: column;
+    width: 512px;
+    justify-content: flex-start;
+    height: 60px;
+}
+
+.product-form-title h3 {
+    font-size: 24px;
+    font-weight: 200;
+    margin: 0;
+}
+
+.product-form-title p {
+    font-size: 14px;
+}
+
+
+.product-form-element {
+    font-size: 14px;
+    color: #222;
+    margin: 20px 0 0 0;
+}
+
+.product-form-element input[type="text"],
+.product-form-element input[type="number"],
+.product-form-element textarea,
+.product-form-element select {
+    margin-top: 5px;
+    height: 40px;
+    display: block;
+    width: 100%;
+    outline: none;
+    border: 1px solid rgb(1, 1, 1);
+    box-sizing: border-box;
+    font-size: 15px;
+    padding: 0 15px;
+    margin: 10px 0 0 0;
+}
+
+button.product-form-btn {
+    width: 100%;
+    height: 42px;
+    background-color: black;
+    color: white;
+    font-size: 14px;
+    font-weight: bold;
+    margin: 22px 0 0 0;
+}
+
+span.required {
+    color: red;
+}
+
+span.optional {
+    color: rgb(130, 130, 130);
+}
