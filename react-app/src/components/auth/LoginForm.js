@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { Redirect } from 'react-router-dom';
+import { Redirect, Link } from 'react-router-dom';
 import { login } from '../../store/session';
+import './LoginForm.css';
 
 const LoginForm = () => {
   const [errors, setErrors] = useState([]);
@@ -18,6 +19,14 @@ const LoginForm = () => {
     }
   };
 
+  const loginDemoUser = async (e) => {
+    e.preventDefault();
+    const data = await dispatch(login('demo@aa.io', 'password'))
+    if (data) {
+      setErrors(data)
+    }
+  }
+
   const updateEmail = (e) => {
     setEmail(e.target.value);
   };
@@ -27,38 +36,53 @@ const LoginForm = () => {
   };
 
   if (user) {
-    return <Redirect to='/' />;
+    return <Redirect to={`/users/${user.id}`} />;
   }
 
   return (
-    <form onSubmit={onLogin}>
-      <div>
-        {errors.map((error, ind) => (
-          <div key={ind}>{error}</div>
-        ))}
+    <div className='login-page-cover'>
+      <div className="login-page-content">
+        <div className='login-page-title'>
+          <h3>Welcome back!</h3>
+          <p>Sign in to use your account!</p>
+        </div>
+        <form onSubmit={onLogin}>
+          <div>
+            {errors.map((error, ind) => (
+              <div key={ind} className='form-errors'>{error}</div>
+            ))}
+          </div>
+          <div className='form-element'>
+            <label htmlFor='email'>Email</label>
+            <input
+              name='email'
+              type='text'
+              placeholder='Email'
+              value={email}
+              onChange={updateEmail}
+            />
+          </div>
+          <div className='form-element'>
+            <label htmlFor='password'>Password</label>
+            <input
+              name='password'
+              type='password'
+              placeholder='Password'
+              value={password}
+              onChange={updatePassword}
+            />
+          </div>
+          <div className="form-element-button">
+            <button type="submit">SIGN IN</button>
+            <button onClick={loginDemoUser}>DEMO USER</button>
+          </div>
+          <div className='login-page-signup'>
+            <span>Not have an account yet?</span>
+            <Link to='/sign-up'>Create an account</Link>
+          </div>
+        </form>
       </div>
-      <div>
-        <label htmlFor='email'>Email</label>
-        <input
-          name='email'
-          type='text'
-          placeholder='Email'
-          value={email}
-          onChange={updateEmail}
-        />
-      </div>
-      <div>
-        <label htmlFor='password'>Password</label>
-        <input
-          name='password'
-          type='password'
-          placeholder='Password'
-          value={password}
-          onChange={updatePassword}
-        />
-        <button type='submit'>Login</button>
-      </div>
-    </form>
+    </div>
   );
 };
 

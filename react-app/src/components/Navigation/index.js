@@ -1,18 +1,68 @@
-import { NavLink } from 'react-router-dom';
+import { NavLink, Link } from 'react-router-dom';
+import { useSelector } from 'react-redux';
+import { useState, useEffect } from 'react';
 import SearchBar from '../SearchBar';
 import './NavBar.css';
+import LogoutButton from '../auth/LogoutButton';
 
 function NavBar() {
+    const user = useSelector(state => state.session.user);
+    const [showMenu, setShowMenu] = useState(false);
+
+    let sessionLinks;
+    if (user) {
+        sessionLinks = (
+            <ul className='profile-drop-down'>
+                <li><Link to={`/users/${user.id}`}>My Account</Link></li>
+                <li><Link to={`/users/${user.id}/orders`}>My Orders</Link></li>
+                <li><Link to={`/users/${user.id}/products`}>My Products</Link></li>
+                <li><LogoutButton /></li>
+            </ul>
+        )
+    } else {
+        sessionLinks = (
+            <ul className='profile-drop-down'>
+                <li><Link to={`/login`}>Sign In</Link></li>
+                <li><Link to={`/sign-up`}>Create an account</Link></li>
+            </ul>
+        )
+    }
+
+    const openMenu = () => {
+        if (showMenu) return;
+        setShowMenu(true);
+    };
+
+    useEffect(() => {
+        if (!showMenu) return;
+
+        const closeMenu = () => {
+            setShowMenu(false);
+        };
+
+        document.addEventListener('click', closeMenu);
+
+        return () => document.removeEventListener("click", closeMenu);
+    }, [showMenu]);
+
+
     return (
         <nav>
             <div className='nav-top'>
                 <SearchBar />
-                <img src="https://i.imgur.com/WNDYJVi.png" alt='lizuvia-logo' />
+                <Link to='/'>
+                    <img src="https://i.imgur.com/WNDYJVi.png" alt='lizuvia-logo' />
+                </Link>
                 <div className='nav-profile-cart'>
-                    <div className='nav-orders-signin'>
-                        <p>{`Orders & Sign In`}</p>
+                    <a href='#' className='nav-orders-signin' onClick={() => setShowMenu(!showMenu)}>
+                        <p>{user ? `Orders & Account` : `Orders & Sign In`}</p>
                         <i className="fa-solid fa-user"></i>
-                    </div>
+                    </a>
+                    {/* {showMenu && ( */}
+                    <>
+                        {sessionLinks}
+                    </>
+                    {/* )} */}
                     <div className='nav-cart-items'>
                         <i className="fa-solid fa-cart-shopping"></i>
                         <p>{`0`}</p>

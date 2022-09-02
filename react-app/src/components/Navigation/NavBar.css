@@ -54,12 +54,15 @@ nav {
     margin-right: 1em;
     font-size: 13px;
     gap: 0.3em;
+    cursor: pointer;
+    text-decoration: none;
 }
 
 .nav-orders-signin .fa-user {
     display: flex;
     justify-content: center;
     font-size: 18px;
+    cursor: pointer;
 }
 
 .nav-cart-items {
@@ -68,6 +71,7 @@ nav {
     justify-content: center;
     font-size: 18px;
     gap: 0.3em;
+    cursor: pointer;
 }
 
 .nav-cart-items p {
@@ -130,4 +134,59 @@ nav {
 
 .active-navlink {
     border-bottom: 2px black solid;
+}
+
+.profile-drop-down {
+    height: auto;
+    width: 200px;
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    top: 36px;
+    right: 8%;
+    justify-content: flex-start;
+    align-items: flex-start;
+    z-index: 10;
+    box-sizing: border-box;
+    padding: 10px 20px 10px 20px;
+    background-color: white;
+    box-shadow: 2px 2px 2px 2px rgba(0, 0, 0, 0.15);
+    border-radius: 5px;
+    border-top: 2px solid rgb(1, 1, 1);
+    display: none;
+}
+
+.nav-profile-cart:hover .profile-drop-down,
+.profile-drop-down:hover {
+    display: block;
+}
+
+.profile-drop-down ul {
+    border-top: 10px solid rgb(1, 1, 1);
+}
+
+.profile-drop-down li {
+    list-style-type: none;
+}
+
+.profile-drop-down li:hover {
+    background-color: rgb(245, 243, 235);
+    border-radius: 5px;
+}
+
+.profile-drop-down li a,
+.profile-drop-down li button {
+    text-decoration: none;
+    background-color: transparent;
+    border: none;
+    font-size: 13px;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    width: 100%;
+    line-height: 40px;
+}
+
+.profile-drop-down li button {
+    padding: 0px;
 }
