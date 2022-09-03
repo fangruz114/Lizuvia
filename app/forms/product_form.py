@@ -5,9 +5,9 @@ from wtforms.validators import DataRequired, Length, NumberRange, ValidationErro
 
 def url_verify(form, field):
     url = field.data
-    if url and not url.endswith('.jpg') and not url.endswith('.png') and url.endswith('.gif'):
+    if url and not url.lower().endswith(('.png', '.jpg', '.jpeg', '.tiff', '.bmp', '.gif')):
         raise ValidationError(
-            'Invalid image url. Image urls must end with .jpg, .png, or .gif.')
+            'Invalid image url. Image urls must end with .jpg, .jpeg, .png, .gif, .tiff, .bmp.')
 
 
 class ProductForm(FlaskForm):
