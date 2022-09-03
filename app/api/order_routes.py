@@ -56,11 +56,16 @@ def modify_order_items(id):
     form['csrf_token'].data = request.cookies['csrf_token']
 
     if form.validate_on_submit():
-        order_product = Order_Product.get(id)
+        order_product = Order_Product.query.get(id)
+        order_id = order_product.order_id
         if order_product:
-            order_product.quantity = form.data['quantity']
-            db.session.commit()
-            return order_product.to_dict()
+            if form.data['quantity'] == 0:
+                db.session.delete(order_product)
+                db.session.commit()
+            else:
+                order_product.quantity = form.data['quantity']
+                db.session.commit()
+                return order_product.to_dict()
     else:
         return {'errors': validation_errors_to_error_messages(form.errors)}, 400
 
