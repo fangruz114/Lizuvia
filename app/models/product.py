@@ -18,7 +18,7 @@ class Product(db.Model):
     carts = db.relationship(
         "Cart", back_populates="product", cascade='all, delete')
     order_products = db.relationship(
-        "Order_Product", back_populates='product', cascade='all, delete')
+        "Order_Product", back_populates='product')
     images = db.relationship(
         "Image", back_populates="product", cascade='all, delete')
     reviews = db.relationship(

@@ -9,6 +9,10 @@ class Order_Product(db.Model):
         "orders.id"), nullable=False)
     product_id = db.Column(db.Integer, db.ForeignKey(
         "products.id"), nullable=False)
+    product_name = db.Column(db.String(100), nullable=False)
+    product_price = db.Column(
+        db.Float(precision=2, asdecimal=False), nullable=False)
+    image_url = db.Column(db.String, nullable=False)
     quantity = db.Column(db.Integer, nullable=False)
 
     product = db.relationship("Product", back_populates='order_products')
@@ -19,8 +23,10 @@ class Order_Product(db.Model):
             'id': self.id,
             'orderId': self.order_id,
             'productId': self.product_id,
+            'productName': self.product_name,
+            'productPrice': self.product_price,
+            'imageUrl': self.image_url,
             'quantity': self.quantity,
-            'product': self.product.to_dict_with_images(),
             'order': self.order.to_dict_no_additions(),
         }
 
@@ -29,5 +35,8 @@ class Order_Product(db.Model):
             'id': self.id,
             'orderId': self.order_id,
             'productId': self.product_id,
+            'productName': self.product_name,
+            'productPrice': self.product_price,
+            'imageUrl': self.image_url,
             'quantity': self.quantity,
         }
