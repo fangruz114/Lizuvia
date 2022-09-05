@@ -21,11 +21,21 @@ def add_item_to_cart(id):
     form['csrf_token'].data = request.cookies['csrf_token']
 
     if form.validate_on_submit():
-        new_cart_item = Cart(
-            product_id=id, user_id=current_user.id, quantity=form.data['quantity'])
-        db.session.add(new_cart_item)
-        db.session.commit()
-        return new_cart_item.to_dict()
+        cart_item = Cart.query.filter(
+            Cart.product_id == id, Cart.user_id == current_user.id).one_or_none()
+        if cart_item:
+            cart_item.quantity = cart_item.quantity + form.data['quantity']
+            db.session.commit()
+            return cart_item.to_dict()
+        else:
+            new_cart_item = Cart(
+                product_id=id,
+                user_id=current_user.id,
+                quantity=form.data['quantity']
+            )
+            db.session.add(new_cart_item)
+            db.session.commit()
+            return new_cart_item.to_dict()
     else:
         return {'errors': validation_errors_to_error_messages(form.errors)}, 400
 

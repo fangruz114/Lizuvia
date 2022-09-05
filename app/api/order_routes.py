@@ -41,7 +41,13 @@ def checkout():
 
     for item in cart_items:
         order_item = Order_Product(
-            order_id=new_order.id, product_id=item['productId'], quantity=item['quantity'])
+            order_id=new_order.id,
+            product_id=item['productId'],
+            product_name=item.product['name'],
+            product_price=item.product['price'],
+            image_url=item.product.images[0].url,
+            quantity=item['quantity']
+        )
         db.session.add(order_item)
 
     db.session.commit()
@@ -57,7 +63,6 @@ def modify_order_items(id):
 
     if form.validate_on_submit():
         order_product = Order_Product.query.get(id)
-        order_id = order_product.order_id
         if order_product:
             if form.data['quantity'] == 0:
                 db.session.delete(order_product)
@@ -65,9 +70,21 @@ def modify_order_items(id):
             else:
                 order_product.quantity = form.data['quantity']
                 db.session.commit()
-                return order_product.to_dict()
+            return order_product.to_dict()
     else:
         return {'errors': validation_errors_to_error_messages(form.errors)}, 400
+
+
+@order_routes.route('/products/<int:id>', methods=['DELETE'])
+@login_required
+def remove_item(id):
+    order_product = Order_Product.query.get(id)
+    if order_product:
+        db.session.delete(order_product)
+        db.session.commit()
+        return {'message': "Successfully Deleted"}
+    else:
+        return {'message': 'Product in Order Not Found'}, 404
 
 
 @order_routes.route('/<int:id>', methods=['DELETE'])
