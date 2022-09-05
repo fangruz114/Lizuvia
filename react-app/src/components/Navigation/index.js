@@ -1,12 +1,15 @@
 import { NavLink, Link } from 'react-router-dom';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import { useState, useEffect } from 'react';
 import SearchBar from '../SearchBar';
 import './NavBar.css';
 import LogoutButton from '../auth/LogoutButton';
+import { getCarts } from '../../store/cart';
 
 function NavBar() {
+    const dispatch = useDispatch();
     const user = useSelector(state => state.session.user);
+    const carts = useSelector(state => Object.values(state.cart));
     const [showMenu, setShowMenu] = useState(false);
 
     let sessionLinks;
@@ -45,6 +48,11 @@ function NavBar() {
         return () => document.removeEventListener("click", closeMenu);
     }, [showMenu]);
 
+    useEffect(() => {
+        dispatch(getCarts());
+    }, [dispatch])
+
+
 
     return (
         <nav>
@@ -65,7 +73,7 @@ function NavBar() {
                     {/* )} */}
                     <div className='nav-cart-items'>
                         <i className="fa-solid fa-cart-shopping"></i>
-                        <p>{`0`}</p>
+                        {carts.length > 0 ? (<p>{carts.length}</p>) : (<p>{`0`}</p>)}
                     </div>
                 </div>
             </div>

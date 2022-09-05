@@ -17,8 +17,6 @@ class Product(db.Model):
     user = db.relationship("User", back_populates='products')
     carts = db.relationship(
         "Cart", back_populates="product", cascade='all, delete')
-    order_products = db.relationship(
-        "Order_Product", back_populates='product')
     images = db.relationship(
         "Image", back_populates="product", cascade='all, delete')
     reviews = db.relationship(
@@ -37,7 +35,6 @@ class Product(db.Model):
             'userId': self.user_id,
             'user': self.user.to_dict_no_additions(),
             'carts': [c.to_dict_no_additions() for c in self.carts],
-            'orderProducts': [op.to_dict_no_additions() for op in self.order_products],
             'images': [i.to_dict_no_additions() for i in self.images],
             'reviews': [r.to_dict_no_additions() for r in self.reviews]
         }

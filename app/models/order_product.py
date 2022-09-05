@@ -7,15 +7,13 @@ class Order_Product(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     order_id = db.Column(db.Integer, db.ForeignKey(
         "orders.id"), nullable=False)
-    product_id = db.Column(db.Integer, db.ForeignKey(
-        "products.id"), nullable=False)
+    product_id = db.Column(db.Integer, nullable=False)
     product_name = db.Column(db.String(100), nullable=False)
     product_price = db.Column(
         db.Float(precision=2, asdecimal=False), nullable=False)
     image_url = db.Column(db.String, nullable=False)
     quantity = db.Column(db.Integer, nullable=False)
 
-    product = db.relationship("Product", back_populates='order_products')
     order = db.relationship("Order", back_populates='order_products')
 
     def to_dict(self):
