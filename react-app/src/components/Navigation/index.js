@@ -17,7 +17,7 @@ function NavBar() {
         sessionLinks = (
             <ul className='profile-drop-down'>
                 <li><Link to={`/users/${user.id}`}>My Account</Link></li>
-                <li><Link to={`/users/${user.id}/orders`}>My Orders</Link></li>
+                <li><Link to={`/orders`}>My Orders</Link></li>
                 <li><Link to={`/users/${user.id}/products`}>My Products</Link></li>
                 <li><LogoutButton /></li>
             </ul>

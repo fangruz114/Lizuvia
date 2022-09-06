@@ -1,6 +1,6 @@
 from flask import Blueprint, request
 from flask_login import login_required, current_user
-from app.models import Order, Order_Product, Cart, db
+from app.models import Order, Order_Product, Cart, Product, db
 from app.forms import CartForm
 from app.api.auth_routes import validation_errors_to_error_messages
 
@@ -37,16 +37,17 @@ def checkout():
     db.session.commit()
 
     carts = Cart.query.filter(Cart.user_id == current_user.id).all()
-    cart_items = [item.to_dict() for item in carts]
+    # cart_items = [item.to_dict() for item in carts]
 
-    for item in cart_items:
+    for item in carts:
+        product = Product.query.get(item.product_id)
         order_item = Order_Product(
             order_id=new_order.id,
-            product_id=item['productId'],
-            product_name=item.product['name'],
-            product_price=item.product['price'],
-            image_url=item.product.images[0].url,
-            quantity=item['quantity']
+            product_id=item.product_id,
+            product_name=product.name,
+            product_price=product.price,
+            image_url=product.images[0].url,
+            quantity=item.quantity
         )
         db.session.add(order_item)
 

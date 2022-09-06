@@ -1,0 +1,98 @@
+.order-history-wrapper {
+    display: flex;
+    justify-content: center;
+    min-height: 80vh;
+}
+
+.order-history-page {
+    width: 100%;
+    height: auto;
+    max-width: 1024px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    margin-top: 5px;
+    background-color: rgb(245, 244, 242);
+}
+
+.order-history-title {
+    margin: 36px;
+}
+
+.order-history-title h3 {
+    margin: 10px 0px 24px 0;
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.order-history-title p {
+    font-size: 14px;
+    margin: 10px 0;
+}
+
+.order-history-title p span {
+    font-weight: bold;
+}
+
+.order-history-order-list {
+    margin: 0 36px;
+    width: 88%;
+}
+
+.order-history-ind-order {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    max-width: 952px;
+    height: auto;
+    margin-bottom: 0.85rem;
+    background-color: white;
+    padding: 24px;
+}
+
+.order-history-ind-order-info {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.order-history-ind-order-image-list {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 0.5rem;
+    margin-top: 1rem;
+}
+
+.order-history-ind-order-image-list img {
+    width: 90px;
+    height: 90px;
+}
+
+.order-history-ind-number-date .order-history-ind-order-number,
+.order-history-ind-number-date .order-history-ind-order-date {
+    line-height: 24px;
+    margin: 0;
+    font-size: 14px;
+}
+
+.order-history-ind-number-date .order-history-ind-order-number {
+    font-weight: bold;
+}
+
+.order-history-ind-order-info a {
+    text-decoration: none;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: bold;
+    border: 1.75px black solid;
+    height: 40px;
+    width: 200px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}

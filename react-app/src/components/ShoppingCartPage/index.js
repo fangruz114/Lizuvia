@@ -1,7 +1,7 @@
 import { useHistory } from 'react-router-dom';
 import { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { getCarts } from '../../store/cart';
+import { emptyCart, getCarts } from '../../store/cart';
 import { addOrder } from '../../store/order';
 import ShoppingCartItems from './ShoppingCartItems';
 import './ShoppingCartPage.css';
@@ -35,6 +35,7 @@ function ShoppingCartPage() {
     const submitOrder = async (e) => {
         e.preventDefault();
         const newOrder = await dispatch(addOrder());
+        await dispatch(emptyCart());
         return history.push(`/orders/${newOrder.id}`);
     }
 
@@ -44,9 +45,9 @@ function ShoppingCartPage() {
                 <div className='shopping-cart-item-list'>
                     <p className='shopping-cart-title'>Shopping Cart</p>
                     <div className='shopping-cart-items'>
-                        {carts ? (
+                        {carts.length > 0 ? (
                             carts.map(cart => <ShoppingCartItems key={cart.id} cart={cart} />)
-                        ) : <p className='empty-shopping-cart-text'>No items in your cart</p>}
+                        ) : (<h3 className='empty-shopping-cart-text'>Hi! Your shopping cart is empty.</h3>)}
                     </div>
                 </div>
                 <div className='shopping-cart-summary'>
