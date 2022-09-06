@@ -78,7 +78,7 @@ export const addOrder = () => async dispatch => {
     if (response.ok) {
         const data = await response.json();
         await dispatch(createOrder(data));
-        return null;
+        return data;
     } else if (response.status < 500) {
         const data = await response.json();
         if (data.errors) {

@@ -60,6 +60,7 @@ export const addToCart = (id, newItem) => async dispatch => {
 
 export const updateCart = (id, item) => async dispatch => {
     const { quantity } = item;
+    console.log('quantity', quantity)
     const response = await fetch(`/api/cart/${id}`, {
         method: "PUT",
         headers: {
@@ -89,6 +90,7 @@ export const deleteCart = (id) => async dispatch => {
     });
     if (response.ok) {
         await dispatch(removeCarts(id));
+        return null;
     } else if (response.status < 500) {
         const data = await response.json();
         if (data.errors) {

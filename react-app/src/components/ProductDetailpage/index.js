@@ -1,14 +1,17 @@
 import { useEffect, useState } from 'react';
-import { Link, useParams } from 'react-router-dom';
+import { Link, useParams, useHistory } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { getOneProduct } from '../../store/product';
 import './ProductDetailPage.css';
+import { addToCart } from '../../store/cart';
 
 function ProductDetailPage() {
     const dispatch = useDispatch();
+    const history = useHistory();
     const { id } = useParams();
     const product = useSelector(state => state.products[+id]);
     const [quantity, setQuantity] = useState(0);
+    const [errors, setErrors] = useState([]);
 
     const category_map = {
         'Furniture': 'furniture',
@@ -27,6 +30,18 @@ function ProductDetailPage() {
     const decreaseQuantity = () => {
         if (quantity > 0) setQuantity(quantity - 1);
         else return;
+    }
+
+    const addItem = async e => {
+        e.preventDefault();
+        const newItem = { quantity };
+        const data = await dispatch(addToCart(id, newItem));
+        if (data) {
+            setErrors(data);
+        } else {
+            setErrors([]);
+            history.push('/cart');
+        }
     }
 
     return (
@@ -53,7 +68,7 @@ function ProductDetailPage() {
                                 <input type="number" value={quantity} min="0" step="1" disabled onChange={e => setQuantity(e.target.value)} />
                                 <button onClick={() => setQuantity(quantity + 1)}>+</button>
                             </div>
-                            <button className='add-to-cart-btn'>ADD TO CART</button>
+                            <button className='add-to-cart-btn' onClick={addItem}>ADD TO CART</button>
                             <p className='detail-page-description-title'>OVERVIEW</p>
                             <p className='detail-page-description'>{product.description}</p>
                             {product.bulletPoints && (
