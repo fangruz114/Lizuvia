@@ -63,6 +63,11 @@ function ProductDetailPage() {
                         <div className='detail-page-right-panel'>
                             <p className='detail-page-product-name'>{product.name}</p>
                             <p className='detail-page-product-price'>${product.price}</p>
+                            <div>
+                                {errors && errors.map((error, ind) => (
+                                    <div key={ind} className="form-errors">{error}</div>
+                                ))}
+                            </div>
                             <div className='detail-page-purchase-quantity'>
                                 <button onClick={decreaseQuantity}>-</button>
                                 <input type="number" value={quantity} min="0" step="1" disabled onChange={e => setQuantity(e.target.value)} />

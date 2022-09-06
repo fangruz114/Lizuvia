@@ -1,0 +1,256 @@
+.order-details-wrapper {
+    width: 100%;
+    height: auto;
+    min-height: 80vh;
+    display: flex;
+    justify-content: center;
+}
+
+.order-details-page {
+    width: 100%;
+    height: auto;
+    max-width: 1024px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    margin-top: 5px;
+    background-color: rgb(245, 244, 242);
+    padding: 20px;
+}
+
+.order-detail-top-buttons {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: flex-start;
+}
+
+.order-detail-top-buttons a {
+    text-decoration: none;
+}
+
+.order-detail-top-buttons a:hover {
+    text-decoration: underline;
+}
+
+.order-detail-edit-cancel-buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    margin-right: 48px;
+}
+
+.order-detail-edit-cancel-buttons button {
+    width: 200px;
+    height: 48px;
+    font-size: 14px;
+    cursor: pointer;
+}
+
+.order-detail-edit-button {
+    background-color: black;
+    color: white;
+    font-weight: bold;
+}
+
+.order-detail-cancel-button {
+    background-color: white;
+    font-weight: bold;
+}
+
+.order-detail-page-title {
+    font-size: 24px;
+    font-weight: bold;
+    margin: 0 0 18px 8px;
+}
+
+.order-detail-page-title p {
+    margin: 0;
+}
+
+.order-detail-main {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 2rem;
+}
+
+.order-detail-info {
+    width: 75%;
+}
+
+.order-detail-number-date {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    gap: 8px;
+    padding: 24px;
+    background-color: white;
+    box-sizing: border-box;
+}
+
+.order-detail-number-date p {
+    margin: 0;
+    font-size: 14px;
+}
+
+.order-detail-number-date p span {
+    font-weight: bold;
+}
+
+.order-detail-order-summary {
+    width: 25%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    padding: 16px;
+    background-color: white;
+}
+
+.order-detail-item-list {
+    width: 100%;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    padding: 24px;
+    margin: 8px 0;
+    background-color: white;
+    gap: 1rem;
+}
+
+.order-detail-item-list-title {
+    margin: 0;
+    font-weight: bold;
+}
+
+.order-detail-item-ind {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: flex-start;
+}
+
+.order-detail-item-img {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin: 0 24px 0 0;
+    gap: 0.5rem;
+}
+
+.order-detail-item-img img {
+    width: 98px;
+    height: 98px;
+}
+
+.order-detail-item-img button {
+    background-color: transparent;
+    border: none;
+    text-decoration: underline;
+    font-size: 13px;
+    cursor: pointer;
+}
+
+.order-detail-item-ind-info {
+    width: 60%;
+}
+
+.order-detail-item-ind-info p {
+    margin: 0;
+    font-size: 14px;
+    line-height: 24px;
+}
+
+.order-detail-item-ind-info .order-detail-ind-item-name {
+    font-weight: bold;
+    overflow-wrap: break-word;
+}
+
+.order-detail-edit-qty-wrapper {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 8px;
+}
+
+.order-detail-edit-qty {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.order-detail-edit-qty input {
+    width: 72px;
+    height: 44px;
+    padding: 12px;
+    box-sizing: border-box;
+    border: 1px solid rgb(204, 204, 204);
+    font-size: 17px;
+    text-align: center;
+}
+
+.order-detail-edit-qty input::-webkit-outer-spin-button,
+.order-detail-edit-qty input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+}
+
+.order-detail-edit-qty button {
+    background-color: transparent;
+    border: none;
+    font-size: 16px;
+    margin-top: 3px;
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+.order-detail-ind-item-review-btn button {
+    width: 150px;
+    height: 36px;
+    margin-top: 24px;
+    font-size: 13px;
+    background-color: white;
+    border: 1.5px solid rgb(1, 1, 1);
+    cursor: pointer;
+}
+
+.order-detail-summary-title {
+    font-size: 14px;
+    font-weight: bold;
+    margin: 8px 0 24px 0;
+}
+
+.order-detail-summary-merchandise,
+.order-detail-summary-shipping,
+.order-detail-summary-total {
+    width: 100%;
+    font-size: 14px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.order-detail-summary-total {
+    border-top: 1px solid black;
+    margin-top: 10px;
+}
+
+.order-detail-summary-merchandise p,
+.order-detail-summary-shipping p {
+    margin: 0;
+    line-height: 24px;
+}
+
+.order-detail-summary-total p {
+    font-weight: bold;
+    line-height: 24px;
+}

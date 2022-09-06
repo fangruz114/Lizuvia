@@ -113,6 +113,7 @@
     font-size: 16px;
     margin-top: 3px;
     text-decoration: underline;
+    cursor: pointer;
 }
 
 .shopping-cart-item-total p {
