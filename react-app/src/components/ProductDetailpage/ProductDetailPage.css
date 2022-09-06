@@ -1,7 +1,7 @@
 .detail-page-cover {
     width: 100%;
     height: auto;
-    min-height: 100vh;
+    min-height: 80vh;
     display: flex;
     justify-content: center;
     color: rgb(1, 1, 1);
@@ -69,7 +69,8 @@
 
 .detail-page-right-panel {
     width: 39%;
-    height: 900px;
+    min-height: 500px;
+    max-height: 1200px;
     display: flex;
     flex-direction: column;
     align-items: flex-start;
@@ -128,6 +129,7 @@
     font-size: 15px;
     font-weight: bold;
     margin: 22px 0;
+    cursor: pointer;
 }
 
 .detail-page-description-title,

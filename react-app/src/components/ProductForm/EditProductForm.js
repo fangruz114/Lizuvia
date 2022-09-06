@@ -20,7 +20,7 @@ function EditProductForm() {
 
     useEffect(() => {
         dispatch(getOneProduct(id))
-    }, [dispatch])
+    }, [dispatch, id])
 
     const updateProduct = async (e) => {
         e.preventDefault();

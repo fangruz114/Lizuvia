@@ -15,7 +15,7 @@ function ImageScrollSec() {
     return (
         <div className='main-scroll-div'>
             <div>
-                <button class='scroll-btn' onClick={scrolll}><i className="fa-solid fa-angle-left"></i></button>
+                <button className='scroll-btn' onClick={scrolll}><i className="fa-solid fa-angle-left"></i></button>
             </div>
             <div className='scroll-images'>
                 <div className='scroll-image-child'>
@@ -47,7 +47,7 @@ function ImageScrollSec() {
                 </div>
             </div>
             <div>
-                <button class='scroll-btn' onClick={scrollr}><i className="fa-solid fa-angle-right"></i></button>
+                <button className='scroll-btn' onClick={scrollr}><i className="fa-solid fa-angle-right"></i></button>
             </div>
         </div>
     )

@@ -1,20 +1,23 @@
 import { NavLink, Link } from 'react-router-dom';
-import { useSelector } from 'react-redux';
-import { useState, useEffect } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
+import { useEffect } from 'react';
 import SearchBar from '../SearchBar';
 import './NavBar.css';
 import LogoutButton from '../auth/LogoutButton';
+import { getCarts } from '../../store/cart';
+import NavCartDropDown from './NavCartDropDown';
 
 function NavBar() {
+    const dispatch = useDispatch();
     const user = useSelector(state => state.session.user);
-    const [showMenu, setShowMenu] = useState(false);
+    const carts = useSelector(state => Object.values(state.cart));
 
     let sessionLinks;
     if (user) {
         sessionLinks = (
             <ul className='profile-drop-down'>
                 <li><Link to={`/users/${user.id}`}>My Account</Link></li>
-                <li><Link to={`/users/${user.id}/orders`}>My Orders</Link></li>
+                <li><Link to={`/orders`}>My Orders</Link></li>
                 <li><Link to={`/users/${user.id}/products`}>My Products</Link></li>
                 <li><LogoutButton /></li>
             </ul>
@@ -28,23 +31,17 @@ function NavBar() {
         )
     }
 
-    const openMenu = () => {
-        if (showMenu) return;
-        setShowMenu(true);
-    };
-
     useEffect(() => {
-        if (!showMenu) return;
+        dispatch(getCarts());
+    }, [dispatch])
 
-        const closeMenu = () => {
-            setShowMenu(false);
-        };
-
-        document.addEventListener('click', closeMenu);
-
-        return () => document.removeEventListener("click", closeMenu);
-    }, [showMenu]);
-
+    const totalItem = (items) => {
+        let count = 0;
+        for (let item of items) {
+            count += Number(item.quantity);
+        }
+        return count;
+    }
 
     return (
         <nav>
@@ -54,18 +51,23 @@ function NavBar() {
                     <img src="https://i.imgur.com/WNDYJVi.png" alt='lizuvia-logo' />
                 </Link>
                 <div className='nav-profile-cart'>
-                    <a href='#' className='nav-orders-signin' onClick={() => setShowMenu(!showMenu)}>
-                        <p>{user ? `Orders & Account` : `Orders & Sign In`}</p>
-                        <i className="fa-solid fa-user"></i>
-                    </a>
-                    {/* {showMenu && ( */}
-                    <>
-                        {sessionLinks}
-                    </>
-                    {/* )} */}
-                    <div className='nav-cart-items'>
-                        <i className="fa-solid fa-cart-shopping"></i>
-                        <p>{`0`}</p>
+                    <div className='nav-profile'>
+                        <div className='nav-orders-signin'>
+                            <p>{user ? `Orders & Account` : `Orders & Sign In`}</p>
+                            <i className="fa-solid fa-user"></i>
+                        </div>
+                        <>
+                            {sessionLinks}
+                        </>
+                    </div>
+                    <div className='nav-cart'>
+                        <Link to='/cart' className='nav-cart-items'>
+                            <i className="fa-solid fa-cart-shopping"></i>
+                            {(user && carts.length > 0) ? (<p>{totalItem(carts)}</p>) : (<p>{`0`}</p>)}
+                        </Link>
+                        <>
+                            <NavCartDropDown carts={user ? carts : null} count={(user && carts) ? totalItem(carts) : 0} />
+                        </>
                     </div>
                 </div>
             </div>

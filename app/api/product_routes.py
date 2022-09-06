@@ -42,7 +42,6 @@ def get_product_by_id(id):
 @login_required
 def add_products():
     form = ProductForm()
-    print('request', request)
 
     form['csrf_token'].data = request.cookies['csrf_token']
     if form.validate_on_submit():
@@ -75,7 +74,6 @@ def add_products():
         return new_product.to_dict()
 
     else:
-        print({'errors': validation_errors_to_error_messages(form.errors)})
         return {'errors': validation_errors_to_error_messages(form.errors)}, 400
 
 
