@@ -40,6 +40,7 @@ const deleteOrder = (id) => ({
 export const getOrders = () => async dispatch => {
     const response = await fetch('/api/orders');
     const data = await response.json();
+    console.log('orders', data);
     if (response.ok) {
         await dispatch(loadOrders(data.orders));
         return null;
@@ -78,7 +79,7 @@ export const addOrder = () => async dispatch => {
     if (response.ok) {
         const data = await response.json();
         await dispatch(createOrder(data));
-        return null;
+        return data;
     } else if (response.status < 500) {
         const data = await response.json();
         if (data.errors) {
@@ -157,7 +158,7 @@ const orderReducer = (state = initialState, action) => {
             return newState;
         case LOAD_ORDER_DETAILS:
             newState = { orders: { ...state.orders }, orderProducts: {} };
-            action.payload.map(item => state.orderProducts[item.id] = item);
+            action.payload.map(item => newState.orderProducts[item.id] = item);
             return newState;
         case CREATE_ORDER:
             newState = { orders: { ...state.orders }, orderProducts: {} };

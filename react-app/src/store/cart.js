@@ -1,6 +1,7 @@
 const LOAD_CARTS = 'carts/LOAD_CARTS';
 const ADD_CARTS = 'carts/ADD_CARTS';
 const REMOVE_CARTS = 'carts/REMOVE_CARTS';
+const RESET_CARTS = 'carts/RESET_CARTS';
 
 const loadCarts = (payload) => ({
     type: LOAD_CARTS,
@@ -16,6 +17,10 @@ const removeCarts = (id) => ({
     type: REMOVE_CARTS,
     id,
 })
+
+const resetCarts = () => ({
+    type: RESET_CARTS,
+});
 
 // thunks
 export const getCarts = () => async dispatch => {
@@ -60,6 +65,7 @@ export const addToCart = (id, newItem) => async dispatch => {
 
 export const updateCart = (id, item) => async dispatch => {
     const { quantity } = item;
+    console.log('quantity', quantity)
     const response = await fetch(`/api/cart/${id}`, {
         method: "PUT",
         headers: {
@@ -89,6 +95,24 @@ export const deleteCart = (id) => async dispatch => {
     });
     if (response.ok) {
         await dispatch(removeCarts(id));
+        return null;
+    } else if (response.status < 500) {
+        const data = await response.json();
+        if (data.errors) {
+            return data.errors;
+        }
+    } else {
+        return ["An error occurred. Please try again."];
+    }
+}
+
+export const emptyCart = () => async dispatch => {
+    const response = await fetch(`/api/cart`, {
+        method: "DELETE",
+    });
+    if (response.ok) {
+        await dispatch(resetCarts());
+        return null;
     } else if (response.status < 500) {
         const data = await response.json();
         if (data.errors) {
@@ -115,6 +139,9 @@ const cartReducer = (state = initialState, action) => {
         case REMOVE_CARTS:
             newState = Object.assign({}, state);
             delete newState[action.id];
+            return newState;
+        case RESET_CARTS:
+            newState = {};
             return newState;
         default:
             return state;

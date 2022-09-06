@@ -72,6 +72,7 @@ nav {
     font-size: 18px;
     gap: 0.3em;
     cursor: pointer;
+    text-decoration: none;
 }
 
 .nav-cart-items p {
@@ -156,7 +157,7 @@ nav {
     display: none;
 }
 
-.nav-profile-cart:hover .profile-drop-down,
+.nav-profile:hover .profile-drop-down,
 .profile-drop-down:hover {
     display: block;
 }
@@ -189,4 +190,115 @@ nav {
 
 .profile-drop-down li button {
     padding: 0px;
+}
+
+.cart-drop-down {
+    height: auto;
+    width: 300px;
+    flex-direction: column;
+    position: absolute;
+    top: 54px;
+    right: 0%;
+    justify-content: flex-start;
+    align-items: flex-start;
+    z-index: 10;
+    box-sizing: border-box;
+    padding: 10px 20px 10px 20px;
+    background-color: white;
+    box-shadow: 2px 2px 2px 2px rgba(0, 0, 0, 0.15);
+    border-radius: 5px;
+    border-top: 2px solid rgb(1, 1, 1);
+    display: none;
+}
+
+.nav-cart:hover .cart-drop-down,
+.cart-drop-down:hover {
+    display: block;
+}
+
+.cart-drop-down-item-count p {
+    font-size: 14px;
+    font-weight: bold;
+}
+
+.cart-drop-down-item-list {
+    display: flex;
+    flex-direction: column;
+}
+
+.cart-drop-down-item-list a.cart-drop-down-ind-item {
+    text-decoration: none;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+.cart-drop-down-item-list a.cart-drop-down-ind-item img {
+    height: auto;
+    width: 50px;
+}
+
+.cart-drop-down-item-info {
+    font-size: 11px;
+    margin: 0 5px 0 10px;
+    width: 195px;
+}
+
+.cart-drop-down-item-info>p {
+    margin: 5px 0 0 0;
+}
+
+.cart-drop-down-item-info>p:hover {
+    text-decoration: underline;
+}
+
+.cart-drop-down-item-qty-price {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    height: 20px;
+    font-size: 12px;
+}
+
+.cart-drop-down-view-cart a {
+    text-decoration: none;
+    font-size: 11px;
+    font-weight: bold;
+    margin-top: 15px;
+}
+
+.cart-drop-down-view-cart a:hover {
+    text-decoration: underline;
+}
+
+.cart-drop-down-subtotal {
+    display: flex;
+    flex-direction: row;
+    font-size: 14px;
+    font-weight: bold;
+    justify-content: space-between;
+    margin-top: 15px;
+    border-top: 2px solid rgb(1, 1, 1);
+}
+
+a.cart-drop-down-view-cart {
+    width: 100%;
+    height: 35px;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.cart-drop-down-view-cart-btn {
+    width: 100%;
+    height: 35px;
+    background-color: black;
+    color: white;
+    font-size: 14px;
+    font-weight: bold;
+    margin: 5px 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
