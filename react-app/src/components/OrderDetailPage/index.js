@@ -36,6 +36,15 @@ function OrderDetailPage() {
         return `${month} ${day}, ${yr}`;
     };
 
+    const verifyTimeForEditing = (timeString) => {
+        const time = new Date(timeString);
+        time.setHours(time.getHours() + 5);
+        console.log(time)
+        if (time < new Date()) {
+            return false
+        } else return true;
+    }
+
     const closeEdit = () => {
         setEdit(false);
     };
@@ -52,13 +61,18 @@ function OrderDetailPage() {
                 <div className='order-details-page'>
                     <div className='order-detail-top-buttons'>
                         <Link to='/orders'>{`< All orders`}</Link>
-                        <div className='order-detail-edit-cancel-buttons'>
-                            <button onClick={() => setEdit(!edit)} className='order-detail-edit-button'>{edit ? `SAVE` : `EDIT ORDER`}</button>
-                            {edit ? null : (<button className='order-detail-cancel-button' onClick={cancel}>CANCEL ORDER</button>)}
-                        </div>
+                        {verifyTimeForEditing(orders[id]?.createdAt) ? (
+                            <div className='order-detail-edit-cancel-buttons'>
+                                <button onClick={() => setEdit(!edit)} className='order-detail-edit-button'>{edit ? `SAVE` : `EDIT ORDER`}</button>
+                                {edit ? null : (<button className='order-detail-cancel-button' onClick={cancel}>CANCEL ORDER</button>)}
+                            </div>
+                        ) : null}
                     </div>
                     <div className='order-detail-page-title'>
                         <p>Order Details</p>
+                        {verifyTimeForEditing(orders[id]?.createdAt) ? null : (
+                            <p className='order-detail-change-warning'>Orders can only be edited or cancelled within 5 hours of placing it.</p>
+                        )}
                     </div>
                     <div className='order-detail-main'>
                         <div className='order-detail-info'>
@@ -69,7 +83,7 @@ function OrderDetailPage() {
                             <div className='order-detail-item-list'>
                                 <p className='order-detail-item-list-title'>Item(s)</p>
                                 {Object.values(items).length > 0 && Object.values(items).map(item => (
-                                    <OrderItemDetails item={item} onClose={closeEdit} editStatus={edit} />
+                                    <OrderItemDetails key={item.id} item={item} onClose={closeEdit} editStatus={edit} />
                                 ))}
                             </div>
                         </div>

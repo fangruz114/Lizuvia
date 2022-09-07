@@ -91,6 +91,7 @@
 .user-product-info .user-product-name,
 .user-product-info .user-product-number {
     font-weight: 600;
+    overflow-wrap: break-word;
 }
 
 .user-product-edit-delete-btn {

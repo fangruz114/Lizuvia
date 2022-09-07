@@ -26,7 +26,7 @@ function OrderHistoryPage() {
                 <div className='order-history-title'>
                     <h3>Orders</h3>
                     <p>You can edit your ordered items or cancel your order within <span>5 hours</span> after it's placed.</p>
-                    <p>No change can be made after 5 hours after the order is placed.</p>
+                    <p>No change can be made after 5 hours of placing it.</p>
                     <p>You can always place a second order for any additional items you want.</p>
                 </div>
                 <div className='order-history-order-list'>

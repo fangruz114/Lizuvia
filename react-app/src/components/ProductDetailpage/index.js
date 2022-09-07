@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { Link, useParams, useHistory } from 'react-router-dom';
+import { Link, useParams, useHistory, Redirect } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { getOneProduct } from '../../store/product';
 import './ProductDetailPage.css';
@@ -12,6 +12,7 @@ function ProductDetailPage() {
     const product = useSelector(state => state.products[+id]);
     const [quantity, setQuantity] = useState(0);
     const [errors, setErrors] = useState([]);
+    const [isLoaded, setIsLoaded] = useState(false);
 
     const category_map = {
         'Furniture': 'furniture',
@@ -25,6 +26,7 @@ function ProductDetailPage() {
 
     useEffect(() => {
         dispatch(getOneProduct(+id))
+            .then(() => setIsLoaded(true))
     }, [dispatch, id]);
 
     const decreaseQuantity = () => {
@@ -42,6 +44,10 @@ function ProductDetailPage() {
             setErrors([]);
             history.push('/cart');
         }
+    }
+
+    if (isLoaded && !product) {
+        return <Redirect to='/404' />;
     }
 
     return (

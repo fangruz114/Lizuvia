@@ -38,7 +38,7 @@ function OrderItemDetails({ item, onClose, editStatus }) {
                 <button onClick={deleteItem}>Remove</button>
             </div>
             <div className='order-detail-item-ind-info'>
-                <Link className='order-detail-ind-item-name'>{item.productName}</Link>
+                <Link className='order-detail-ind-item-name' to={`/products/${item.productId}`}>{item.productName}</Link>
                 <p className='order-detail-ind-item-sku'>SKU: {item.productId}</p>
                 <div>
                     {errors && errors.map((error, ind) => (
