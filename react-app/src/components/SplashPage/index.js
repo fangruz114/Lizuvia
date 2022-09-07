@@ -10,7 +10,7 @@ function HomePage() {
             <ImageScrollSec />
             <div className='cozy-season-sec'>
                 <p>The Season of Cozy</p>
-                <Link to='/signup'>Sign Up to Shop</Link>
+                <Link to='/sign-up'>Sign Up to Shop</Link>
             </div>
             <img className='living-room-essentials' src='https://assets.pbimgs.com/pbimgs/rk/images/dp/ecm/202234/1188/001/001.jpg' alt='living-room-essentials' />
             <LivingRoomImageScroll />
