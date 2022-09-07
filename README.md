@@ -1,6 +1,6 @@
 # Lizuvia
 
-Lizuvia is a website clone, inspired by PotteryBarn. Lizuvia can be used to find trendy home furnishing and decoration products, as well as replicate the functionality of add to cart, purchasing products. Lizuvia users not only can place orders for the products, but also can list their own product on Lizuvia, using it as a marketplace.
+Lizuvia, an e-commerce platform, is a website for users/companies to list their home furnitures and decoration products, receive feedback on improvements on the products and services, for users/customers to place order for the products.
 
 **Live Site:** [Lizuvia](https://lizuvia.herokuapp.com/)
 
