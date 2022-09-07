@@ -222,6 +222,7 @@
     background-color: white;
     border: 1.5px solid rgb(1, 1, 1);
     cursor: pointer;
+    visibility: hidden;
 }
 
 .order-detail-summary-title {

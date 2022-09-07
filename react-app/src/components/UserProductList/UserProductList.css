@@ -3,7 +3,7 @@
     min-height: 80vh;
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: flex-start;
 }
 
 .user-products-page-title-wrapper {
@@ -124,4 +124,13 @@
 .user-product-edit-delete-btn a:hover,
 .user-product-edit-delete-btn button:hover {
     background-color: rgb(89, 89, 89);
+}
+
+.user-no-product {
+    height: 70vh;
+    font-size: 14px;
+}
+
+.delete-product-confirm-modal {
+    background-color: rgba(0, 0, 0, 0.7);
 }

@@ -1,18 +1,19 @@
-import { Link, useParams, useHistory } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { getOrderDetails, getOrders } from '../../store/order';
 import OrderItemDetails from './OrderItemDetails';
-import { cancelOrder } from '../../store/order';
+import { Modal } from '../../context/Modal';
+import CancelorderConfirm from './CancelOrderConfirm';
 import './OrderDetailPage.css';
 
 function OrderDetailPage() {
     const dispatch = useDispatch();
-    const history = useHistory();
     const { id } = useParams();
     const orders = useSelector(state => state.orders.orders);
     const items = useSelector(state => state.orders.orderProducts);
     const [edit, setEdit] = useState(false);
+    const [showModal, setShowModal] = useState(false);
 
     useEffect(() => {
         dispatch(getOrders())
@@ -49,12 +50,6 @@ function OrderDetailPage() {
         setEdit(false);
     };
 
-    const cancel = async (e) => {
-        e.preventDefault();
-        await dispatch(cancelOrder(id))
-            .then(history.push('/orders'))
-    };
-
     return (
         <div className='order-details-wrapper'>
             {(orders && items) && (
@@ -64,7 +59,18 @@ function OrderDetailPage() {
                         {verifyTimeForEditing(orders[id]?.createdAt) ? (
                             <div className='order-detail-edit-cancel-buttons'>
                                 <button onClick={() => setEdit(!edit)} className='order-detail-edit-button'>{edit ? `SAVE` : `EDIT ORDER`}</button>
-                                {edit ? null : (<button className='order-detail-cancel-button' onClick={cancel}>CANCEL ORDER</button>)}
+                                {edit ? null : (
+                                    <>
+                                        <button className='order-detail-cancel-button' onClick={() => setShowModal(true)}>CANCEL ORDER</button>
+                                        {showModal && (
+                                            <div className='cancel-order-confirm-modal'>
+                                                <Modal onClose={() => setShowModal(false)} id={id}>
+                                                    <CancelorderConfirm onClose={() => setShowModal(false)} id={id} />
+                                                </Modal>
+                                            </div>
+                                        )}
+                                    </>
+                                )}
                             </div>
                         ) : null}
                     </div>
