@@ -1,0 +1,147 @@
+.cart-confirmation-modal {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 90vw;
+    max-width: 990px;
+    height: 340px;
+    padding: 24px;
+    background: white;
+    box-shadow: 2px 2px 2px 2px rgba(0, 0, 0, 0.15);
+    border-radius: 5px;
+}
+
+.cart-confirmation-modal-close {
+    display: flex;
+    justify-content: flex-end;
+    margin: 0 20px 0 20px;
+}
+
+.cart-confirmation-modal-close button {
+    font-size: 24px;
+    font-weight: 100;
+    width: 27px;
+    height: 27px;
+    border: none;
+    background-color: transparent;
+    cursor: pointer;
+}
+
+.cart-confirmation-content {
+    display: flex;
+    flex-direction: row;
+}
+
+.cart-confirmation-left {
+    width: 60%;
+    height: 100%;
+    margin: 0 48px 32px 28px;
+}
+
+.cart-confirmation-item {
+    display: flex;
+    flex-direction: row;
+}
+
+.cart-confirmation-left-title {
+    font-size: 16px;
+    font-weight: bold;
+    margin-bottom: 16px;
+    padding: 0 0 2px 0;
+    line-height: 28px;
+    border-bottom: 1px solid #e5e5e4;
+}
+
+.cart-confirmation-item {
+    width: 100%;
+    height: auto;
+}
+
+.cart-confirmation-item img {
+    width: 80px;
+    height: 80px;
+}
+
+.cart-confirmation-item-info {
+    margin-left: 20px;
+}
+
+.cart-confirmation-item-info p {
+    font-size: 11px;
+    line-height: 15px;
+    letter-spacing: 0.2px;
+    margin: 0 0 1px 0;
+}
+
+.cart-confirmation-item-info .cart-confirmation-item-name {
+    font-weight: 600;
+    margin-bottom: 12px;
+}
+
+.cart-confirmation-right {
+    width: 32%;
+    margin-right: 48px;
+    display: flex;
+    flex-direction: column;
+}
+
+.cart-confirmation-right-title {
+    font-size: 16px;
+    line-height: 28px;
+    font-weight: 600;
+    border-bottom: 1px solid #e5e5e4;
+    padding-bottom: 2px;
+    margin-bottom: 16px;
+}
+
+.cart-confirmation-amount-total {
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 21px;
+    padding-bottom: 8px;
+    margin: 0;
+}
+
+.cart-confirmation-not-include-warning {
+    font-size: 11.445px;
+    line-height: 17.168px;
+    margin: 0;
+}
+
+.continue-shopping {
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 1.5px;
+    line-height: 18px;
+    border: 1px solid black;
+    border-radius: 1px;
+    height: auto;
+    padding: 11px 0 11px 0;
+    background-color: white;
+    margin-top: 24px;
+}
+
+.cart-confirmation-right a {
+    text-decoration: none;
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 1.5px;
+    line-height: 18px;
+    border: 1px solid black;
+    background-color: black;
+    color: white;
+    border-radius: 1px;
+    height: auto;
+    padding: 11px 0 11px 0;
+    text-align: center;
+    margin-top: 12px;
+}
+
+.cart-confirmation-review-warning {
+    margin-top: 15px;
+    text-align: center;
+    font-size: 11.445px;
+    line-height: 14px;
+    width: 100%;
+}

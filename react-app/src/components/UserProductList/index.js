@@ -1,20 +1,19 @@
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
-import { getUserProducts, removeProduct } from '../../store/product';
+import { getUserProducts } from '../../store/product';
+import { Modal } from '../../context/Modal';
+import DeleteProductConf from './DeleteProductConf';
 import './UserProductList.css';
 
 function UserProductList() {
     const dispatch = useDispatch();
     const userProducts = useSelector(state => Object.values(state.products));
+    const [showModal, setShowModal] = useState(false);
 
     useEffect(() => {
         dispatch(getUserProducts())
     }, [dispatch])
-
-    const deleteProduct = (id) => {
-        dispatch(removeProduct(id))
-    };
 
     return (
         <div className='user-products-cover'>
@@ -26,7 +25,7 @@ function UserProductList() {
             </div>
             <div className='user-product-list-wrapper'>
                 <div className='user-product-list'>
-                    {userProducts.length && (
+                    {userProducts.length > 0 && (
                         userProducts.map(product => (
                             <div className='user-products-ind' key={product.id}>
                                 <div className='user-product-img'>
@@ -43,10 +42,20 @@ function UserProductList() {
                                 </div>
                                 <div className='user-product-edit-delete-btn'>
                                     <Link to={`/products/${product.id}/edit`}>EDIT</Link>
-                                    <button onClick={() => deleteProduct(product.id)}>DELETE</button>
+                                    <button onClick={() => setShowModal(true)}>DELETE</button>
+                                    {showModal && (
+                                        <div className='delete-product-confirm-modal'>
+                                            <Modal onClose={() => setShowModal(false)} id={product.id}>
+                                                <DeleteProductConf onClose={() => setShowModal(false)} id={product.id} />
+                                            </Modal>
+                                        </div>
+                                    )}
                                 </div>
                             </div>
                         ))
+                    )}
+                    {userProducts.length === 0 && (
+                        <div className='user-no-product'>You haven't listed any product yet.</div>
                     )}
                 </div>
             </div>

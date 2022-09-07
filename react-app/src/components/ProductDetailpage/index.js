@@ -1,18 +1,20 @@
 import { useEffect, useState } from 'react';
-import { Link, useParams, useHistory, Redirect } from 'react-router-dom';
+import { Link, useParams, Redirect } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { getOneProduct } from '../../store/product';
 import './ProductDetailPage.css';
 import { addToCart } from '../../store/cart';
+import AddToCartConfirm from './AddToCartConfirm';
+import { Modal } from '../../context/Modal';
 
 function ProductDetailPage() {
     const dispatch = useDispatch();
-    const history = useHistory();
     const { id } = useParams();
     const product = useSelector(state => state.products[+id]);
     const [quantity, setQuantity] = useState(0);
     const [errors, setErrors] = useState([]);
     const [isLoaded, setIsLoaded] = useState(false);
+    const [showModal, setShowModal] = useState(false);
 
     const category_map = {
         'Furniture': 'furniture',
@@ -42,7 +44,7 @@ function ProductDetailPage() {
             setErrors(data);
         } else {
             setErrors([]);
-            history.push('/cart');
+            setShowModal(true);
         }
     }
 
@@ -80,6 +82,13 @@ function ProductDetailPage() {
                                 <button onClick={() => setQuantity(quantity + 1)}>+</button>
                             </div>
                             <button className='add-to-cart-btn' onClick={addItem}>ADD TO CART</button>
+                            {showModal && (
+                                <div className='add-to-cart-confirmation-modal'>
+                                    <Modal onClose={() => setShowModal(false)} product={product} quantity={quantity}>
+                                        <AddToCartConfirm onClose={() => setShowModal(false)} product={product} quantity={quantity} />
+                                    </Modal>
+                                </div>
+                            )}
                             <p className='detail-page-description-title'>OVERVIEW</p>
                             <p className='detail-page-description'>{product.description}</p>
                             {product.bulletPoints && (
