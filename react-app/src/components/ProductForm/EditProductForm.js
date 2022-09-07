@@ -81,7 +81,7 @@ function EditProductForm() {
                             <option value='Halloween'>Halloween</option>
                         </select>
                     </div>
-                    <div className='product-form-element'>
+                    <div className='product-form-element product-form-description'>
                         <label htmlFor='description'>Description <span className='required'>(required)</span></label>
                         <textarea
                             rows='6'

@@ -17,6 +17,8 @@ import AddProductForm from './components/ProductForm/AddProductForm';
 import EditProductForm from './components/ProductForm/EditProductForm';
 import ShoppingCartPage from './components/ShoppingCartPage';
 import OrderHistoryPage from './components/OrderHistoryPage';
+import OrderDetailPage from './components/OrderDetailPage';
+import PageNotFound from './components/PageNotFound';
 
 function App() {
   const [loaded, setLoaded] = useState(false);
@@ -70,9 +72,15 @@ function App() {
         <ProtectedRoute path='/cart' exact={true} >
           <ShoppingCartPage />
         </ProtectedRoute>
+        <ProtectedRoute path='/orders/:id'>
+          <OrderDetailPage />
+        </ProtectedRoute>
         <ProtectedRoute path='/orders' exact={true} >
           <OrderHistoryPage />
         </ProtectedRoute>
+        <Route>
+          <PageNotFound />
+        </Route>
       </Switch>
       <Footer />
     </BrowserRouter>

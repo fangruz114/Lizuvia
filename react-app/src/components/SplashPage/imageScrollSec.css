@@ -23,6 +23,22 @@
     -webkit-appearance: none;
 }
 
+.scroll-living-images {
+    display: flex;
+    width: 94%;
+    max-width: 1670px;
+    height: auto;
+    justify-content: left;
+    align-items: center;
+    overflow: auto;
+    position: relative;
+    scroll-behavior: smooth;
+}
+
+.scroll-living-images::-webkit-scrollbar {
+    -webkit-appearance: none;
+}
+
 .scroll-image-child {
     width: 310px;
     height: 500px;
