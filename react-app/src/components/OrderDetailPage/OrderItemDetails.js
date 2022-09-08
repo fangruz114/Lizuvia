@@ -64,7 +64,7 @@ function OrderItemDetails({ item, onClose, editStatus }) {
                                 step='1' min='0' max='99'
                                 maxLength='2'
                                 value={quantity}
-                                onChange={e => setQuantity(e.target.value)}
+                                onChange={e => setQuantity(parseInt(e.target.value))}
                             />
                             <button onClick={updateQuantity}>Update</button>
                         </div>
