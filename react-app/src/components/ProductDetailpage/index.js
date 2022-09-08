@@ -78,7 +78,7 @@ function ProductDetailPage() {
                             </div>
                             <div className='detail-page-purchase-quantity'>
                                 <button onClick={decreaseQuantity}>-</button>
-                                <input type="number" value={quantity} min="0" step="1" disabled onChange={e => setQuantity(e.target.value)} />
+                                <input type="number" value={quantity} min="0" max='99' step="1" onChange={e => setQuantity(parseInt(e.target.value))} />
                                 <button onClick={() => setQuantity(quantity + 1)}>+</button>
                             </div>
                             <button className='add-to-cart-btn' onClick={addItem}>ADD TO CART</button>
