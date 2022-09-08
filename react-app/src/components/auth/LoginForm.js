@@ -60,6 +60,7 @@ const LoginForm = () => {
               placeholder='Email'
               value={email}
               onChange={updateEmail}
+              maxLength='200'
             />
           </div>
           <div className='form-element'>
@@ -70,6 +71,7 @@ const LoginForm = () => {
               placeholder='Password'
               value={password}
               onChange={updatePassword}
+              maxLength='50'
             />
           </div>
           <div className="form-element-button">

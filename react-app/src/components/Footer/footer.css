@@ -60,6 +60,15 @@
     gap: 1rem;
 }
 
+.connect-with-us-container .linkedin-container a {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    text-decoration: none;
+}
+
 .developer-name {
     font-size: 1rem;
     letter-spacing: 0.2px;

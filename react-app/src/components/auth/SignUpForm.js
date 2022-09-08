@@ -58,6 +58,7 @@ const SignUpForm = () => {
               onChange={(e) => setFirstName(e.target.value)}
               value={firstName}
               placeholder="First Name"
+              maxLength='45'
             ></input>
           </div>
           <div className='form-element'>
@@ -68,6 +69,7 @@ const SignUpForm = () => {
               onChange={(e) => setLastName(e.target.value)}
               value={lastName}
               placeholder="Last Name"
+              maxLength='45'
             ></input>
           </div>
           <div className='form-element'>
@@ -78,6 +80,7 @@ const SignUpForm = () => {
               onChange={(e) => setEmail(e.target.value)}
               value={email}
               placeholder="Email"
+              maxLength='200'
             ></input>
           </div>
           <div className='form-element'>
@@ -88,6 +91,7 @@ const SignUpForm = () => {
               onChange={(e) => setPassword(e.target.value)}
               value={password}
               placeholder="Password"
+              maxLength='50'
             ></input>
           </div>
           <div className='form-element'>
@@ -99,6 +103,7 @@ const SignUpForm = () => {
               value={repeatPassword}
               required={true}
               placeholder="Confirm Password"
+              maxLength='50'
             ></input>
           </div>
           <div className="form-element-button">

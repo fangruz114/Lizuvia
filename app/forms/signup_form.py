@@ -1,6 +1,6 @@
 from flask_wtf import FlaskForm
 from wtforms import StringField
-from wtforms.validators import DataRequired, Email, ValidationError
+from wtforms.validators import DataRequired, Email, Length, ValidationError
 from app.models import User
 
 
@@ -26,10 +26,10 @@ def password_length(form, field):
 
 class SignUpForm(FlaskForm):
     first_name = StringField(
-        'first_name', validators=[DataRequired()])
+        'first_name', validators=[DataRequired('First name is required.'), Length(max=50, message='First name cannot exceed 50 characters.')])
     last_name = StringField(
-        'last_name', validators=[DataRequired()])
+        'last_name', validators=[DataRequired('Last name is required.'), Length(max=50, message='First name cannot exceed 50 characters.')])
     email = StringField('email', validators=[
-                        DataRequired(), user_exists, validate_email])
+                        DataRequired('Email is required.'), user_exists, validate_email, Length(max=200, message='Email length cannot exceed 200 characters.')])
     password = StringField('password', validators=[
-                           DataRequired(), password_length])
+                           DataRequired('Password is required.'), password_length, Length(max=200, message='Password length cannot exceed 200 characters.')])
