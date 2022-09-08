@@ -26,9 +26,14 @@ nav {
     line-height: 10px;
 }
 
+.nav-logo {
+    position: relative;
+    left: -4%;
+}
+
 .nav-top .nav-search-bar {
     width: 22%;
-    height: 31px;
+    height: 1.8rem;
 }
 
 .nav-top img {

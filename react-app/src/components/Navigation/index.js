@@ -47,7 +47,7 @@ function NavBar() {
         <nav>
             <div className='nav-top'>
                 <SearchBar />
-                <Link to='/'>
+                <Link to='/' className='nav-logo'>
                     <img src="https://i.imgur.com/WNDYJVi.png" alt='lizuvia-logo' />
                 </Link>
                 <div className='nav-profile-cart'>
