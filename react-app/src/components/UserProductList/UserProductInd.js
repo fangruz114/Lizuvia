@@ -23,7 +23,7 @@ function UserProductInd({ product }) {
                 <p>${product.price}</p>
             </div>
             <div className='user-product-edit-delete-btn'>
-                <button onClick={() => setShowEditProductModel(true)}>EDIT</button>
+                <button className='user-product-edit-btn' onClick={() => setShowEditProductModel(true)}>EDIT</button>
                 {showEditProductModel && (
                     <div className='edit-product-form-modal'>
                         <Modal onClose={() => setShowEditProductModel(false)} product={product}>
@@ -31,7 +31,7 @@ function UserProductInd({ product }) {
                         </Modal>
                     </div>
                 )}
-                <button onClick={() => setShowConfirmationModel(true)}>DELETE</button>
+                <button className='user-product-delete-btn' onClick={() => setShowConfirmationModel(true)}>DELETE</button>
                 {showConfirmationModel && (
                     <div className='delete-product-confirm-modal'>
                         <Modal onClose={() => setShowConfirmationModel(false)} id={product.id}>

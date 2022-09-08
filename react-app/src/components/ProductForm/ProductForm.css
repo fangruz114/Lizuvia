@@ -92,6 +92,7 @@ button.product-form-btn {
     font-size: 14px;
     font-weight: bold;
     margin: 22px 0 0 0;
+    cursor: pointer;
 }
 
 span.required {
