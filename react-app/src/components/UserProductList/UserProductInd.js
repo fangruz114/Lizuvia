@@ -2,9 +2,11 @@ import { Modal } from '../../context/Modal';
 import { Link } from 'react-router-dom';
 import DeleteProductConf from './DeleteProductConf';
 import { useState } from 'react';
+import EditProductForm from '../ProductForm/EditProductForm';
 
 function UserProductInd({ product }) {
     const [showConfirmationModel, setShowConfirmationModel] = useState(false);
+    const [showEditProductModel, setShowEditProductModel] = useState(false);
 
     return (
         <div className='user-products-ind' key={product.id}>
@@ -21,7 +23,14 @@ function UserProductInd({ product }) {
                 <p>${product.price}</p>
             </div>
             <div className='user-product-edit-delete-btn'>
-                <Link to={`/products/${product.id}/edit`}>EDIT</Link>
+                <button onClick={() => setShowEditProductModel(true)}>EDIT</button>
+                {showEditProductModel && (
+                    <div className='edit-product-form-modal'>
+                        <Modal onClose={() => setShowEditProductModel(false)} product={product}>
+                            <EditProductForm onClose={() => setShowEditProductModel(false)} product={product} />
+                        </Modal>
+                    </div>
+                )}
                 <button onClick={() => setShowConfirmationModel(true)}>DELETE</button>
                 {showConfirmationModel && (
                     <div className='delete-product-confirm-modal'>
