@@ -1,10 +1,14 @@
 import { Link } from 'react-router-dom';
+// import SortBar from '../SortBar';
 import './ProductListPage.css';
 
 function ProductList({ products }) {
 
     return (
         <div className='product-list-cover'>
+            {/* <div className='product-list-back-sort-bar'>
+                <SortBar products={products} />
+            </div> */}
             <div className='product-list'>
                 {products && (
                     products.map(product => (
