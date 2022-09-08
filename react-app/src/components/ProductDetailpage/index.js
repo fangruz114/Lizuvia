@@ -98,14 +98,14 @@ function ProductDetailPage() {
                                     ))}
                                 </ul>
                             )}
-                            <p className='detail-page-dimensions-title'>DIMENSIONS</p>
+                            {/* <p className='detail-page-dimensions-title'>DIMENSIONS</p>
                             {product.dimension && (
                                 <ul className='detail-page-dimensions'>
                                     {product.dimension.split(',').map(dimension => (
                                         <li key={product.id}>{dimension}</li>
                                     ))}
                                 </ul>
-                            )}
+                            )} */}
                         </div>
                     </div>
                 </div>

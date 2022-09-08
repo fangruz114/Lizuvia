@@ -84,7 +84,7 @@ function NavBar() {
                 </div>
             </div>
             <div className='nav-promo'>
-                <p>HOLIDAY PROMO</p>
+                <p>ENJOY YOUR SHOPPING WITH US</p>
                 <p>FREE SHIPPING ON ALL ITEMS</p>
             </div>
         </nav>

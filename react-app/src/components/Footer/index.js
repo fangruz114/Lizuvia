@@ -7,10 +7,15 @@ function Footer() {
                 <a
                     href="https://github.com/fangruz114/Lizuvia"
                     className="source-code"
+                    rel="noopener noreferrer"
+                    target="_blank"
                 >
                     <p>Source Code</p>
                 </a>
-                <a href="https://github.com/fangruz114/Lizuvia">
+                <a href="https://github.com/fangruz114/Lizuvia"
+                    rel="noopener noreferrer"
+                    target="_blank"
+                >
                     <i className="fa-brands fa-github"></i>
                 </a>
             </div>
@@ -23,8 +28,8 @@ function Footer() {
                         target="_blank"
                     >
                         <i className="fa-brands fa-linkedin"></i>
+                        <p className="developer-name">Fangru Zhou</p>
                     </a>
-                    <p className="developer-name">Fangru Zhou</p>
                 </div>
             </div>
         </div>
