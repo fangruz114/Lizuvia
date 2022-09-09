@@ -1,6 +1,6 @@
 import { useDispatch } from 'react-redux';
 import { useHistory } from 'react-router-dom';
-import { cancelOrder } from '../../store/order';
+import { cancelOrder, getOrders } from '../../store/order';
 import './CancelOrderConfirm.css';
 
 function CancelorderConfirm({ onClose, id }) {
@@ -10,7 +10,8 @@ function CancelorderConfirm({ onClose, id }) {
     const cancel = async (e) => {
         e.preventDefault();
         await dispatch(cancelOrder(id))
-            .then(history.push('/orders'))
+            .then(() => dispatch(getOrders()))
+            .then(() => history.push('/orders'))
     };
 
     return (

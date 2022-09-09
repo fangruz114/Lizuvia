@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
+import { getCarts } from '../../store/cart';
 import { editProduct } from '../../store/product';
 import './ProductForm.css';
 
@@ -22,7 +23,7 @@ function EditProductForm({ onClose, product }) {
             price,
             url1,
         };
-        const data = await dispatch(editProduct(product.id, newProduct));
+        const data = await dispatch(editProduct(product.id, newProduct)).then(() => dispatch(getCarts()));
 
         if (data) {
             setErrors(data);

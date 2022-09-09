@@ -1,5 +1,6 @@
 import { useDispatch } from 'react-redux';
 import { removeProduct } from '../../store/product';
+import { getCarts } from '../../store/cart';
 import '../ProductDetailpage/AddToCartConfirm.css';
 
 function DeleteProductConf({ onClose, id }) {
@@ -8,6 +9,7 @@ function DeleteProductConf({ onClose, id }) {
     const deleteProduct = async (e) => {
         e.preventDefault();
         await dispatch(removeProduct(id))
+            .then(() => dispatch(getCarts()))
             .then(() => onClose())
     };
 

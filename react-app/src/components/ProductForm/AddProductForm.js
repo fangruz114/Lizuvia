@@ -23,15 +23,15 @@ function AddProductForm() {
     const createProduct = async (e) => {
         e.preventDefault();
         const newProduct = {
-            name,
-            category,
-            description,
+            name: name.trim(),
+            category: category.trim(),
+            description: description.trim(),
             price,
-            url1,
-            url2,
-            url3,
-            url4,
-            url5,
+            url1: url1.trim(),
+            url2: url2?.trim(),
+            url3: url3?.trim(),
+            url4: url4?.trim(),
+            url5: url5?.trim(),
         };
         const data = await dispatch(addProduct(newProduct));
 
