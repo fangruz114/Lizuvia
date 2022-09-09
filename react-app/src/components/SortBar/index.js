@@ -1,16 +1,13 @@
-import { useSearchParams } from 'react-router-dom';
+import './SortBar.css';
 
-function SortBar({ products }) {
-    const [searchParams, setSearchParams] = useSearchParams();
-
-    const sortValue = searchParams.get('order') || '';
+function SortBar({ searchTerm, setSearchTerm }) {
 
     const handleSort = event => {
         const order = event.target.value;
         if (order === 'Featured') {
-            setSearchParams({});
+            setSearchTerm('');
         } else {
-            setSearchParams({ order });
+            setSearchTerm(order);
         }
     }
 
@@ -19,7 +16,7 @@ function SortBar({ products }) {
             <p>Sort By</p>
             <select
                 name='sort'
-                value={sortValue}
+                value={searchTerm}
                 onChange={handleSort}
                 required
             >
