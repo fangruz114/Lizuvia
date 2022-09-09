@@ -47,7 +47,7 @@ class ProductForm(FlaskForm):
                               DataRequired('Description is required.'), Length(
                                   min=1, max=2000, message='Description is too long. Max 2000 characters')])
     price = DecimalField('price', validators=[DataRequired('Price is required.'), NumberRange(
-        min=0, message='price has to be greater than 0')])
+        min=0, max=9999, message='price has to be greater than $0 and less than or equal to $9,999')])
     url1 = StringField('url1', validators=[DataRequired(
         'Image #1 url is required.'), url1_verify])
     url2 = StringField('url2', validators=[url2_verify])

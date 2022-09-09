@@ -83,10 +83,10 @@ function NavBar() {
                     <NavLink to='/products/categories/halloween' activeClassName='active-navlink'>Halloween</NavLink>
                 </div>
             </div>
-            <div className='nav-promo'>
+            <Link to='/products' className='nav-promo'>
                 <p>ENJOY YOUR SHOPPING WITH US</p>
                 <p>FREE SHIPPING ON ALL ITEMS</p>
-            </div>
+            </Link>
         </nav>
     )
 }

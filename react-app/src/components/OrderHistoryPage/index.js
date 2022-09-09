@@ -41,7 +41,7 @@ function OrderHistoryPage() {
                             </div>
                             <div className='order-history-ind-order-image-list'>
                                 {order.orderProducts && order.orderProducts.map(product => (
-                                    <img key={product.id} src={product.imageUrl} alt='order-img-list' />
+                                    <img key={product.id} src={product.imageUrl} alt='order-img-list' onError={e => e.target.src = 'https://i.imgur.com/rIUtyi2.jpg'} />
                                 ))}
                             </div>
                         </div>

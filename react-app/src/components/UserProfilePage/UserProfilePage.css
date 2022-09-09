@@ -31,6 +31,7 @@
 .user-profile-nav a {
     padding-bottom: 1.25rem;
     font-size: 14px;
+    overflow-wrap: anywhere;
 }
 
 .user-profile-nav a:hover {
@@ -54,6 +55,7 @@
 .user-profile-user-info h1 {
     font-weight: 600;
     margin: 0;
+    overflow-wrap: anywhere;
 }
 
 .user-profile-user-info p {

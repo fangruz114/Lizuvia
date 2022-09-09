@@ -77,6 +77,7 @@
 .cart-confirmation-item-info .cart-confirmation-item-name {
     font-weight: 600;
     margin-bottom: 12px;
+    overflow-wrap: anywhere;
 }
 
 .cart-confirmation-right {
@@ -120,6 +121,7 @@
     padding: 11px 0 11px 0;
     background-color: white;
     margin-top: 24px;
+    cursor: pointer;
 }
 
 .cart-confirmation-right a {

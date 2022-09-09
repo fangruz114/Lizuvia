@@ -12,7 +12,7 @@ function UserProductInd({ product }) {
         <div className='user-products-ind' key={product.id}>
             <div className='user-product-img'>
                 <Link to={`/products/${product.id}`}>
-                    <img src={product.images[0].url} alt='user-product-display' />
+                    <img src={product.images[0].url} alt='user-product-display' onError={e => e.target.src = 'https://i.imgur.com/rIUtyi2.jpg'} />
                 </Link>
             </div>
             <div className='user-product-info'>
