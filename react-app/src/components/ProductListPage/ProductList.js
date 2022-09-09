@@ -11,7 +11,7 @@ function ProductList({ products }) {
                         <div className='product-card' key={product.id}>
                             <Link to={`/products/${product.id}`}>
                                 <div className='product-image'>
-                                    <img className='product-card-img-display' src={product.images[0].url} alt='product-card-display' />
+                                    <img className='product-card-img-display' src={product.images[0].url} alt='product-card-display' onError={e => e.target.src = 'https://i.imgur.com/rIUtyi2.jpg'} />
                                 </div>
                             </Link>
                             <div className='product-card-info'>

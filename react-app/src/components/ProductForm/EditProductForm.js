@@ -93,6 +93,7 @@ function EditProductForm({ onClose, product }) {
                         value={price}
                         onChange={(e) => setPrice(e.target.value)}
                         min='0.01'
+                        max='9999'
                         step='0.01'
                     />
                 </div>

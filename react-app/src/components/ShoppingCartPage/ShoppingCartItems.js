@@ -29,7 +29,7 @@ function ShoppingCartItems({ cart }) {
     return (
         <div className='shopping-cart-ind-item'>
             <Link to={`/products/${cart.product.id}`} className='shopping-cart-img'>
-                <img src={cart.product.images[0].url} alt='shopping-cart-ind-display' />
+                <img src={cart.product.images[0].url} alt='shopping-cart-ind-display' onError={e => e.target.src = 'https://i.imgur.com/rIUtyi2.jpg'} />
             </Link>
             <div className='shopping-cart-ind-info'>
                 <Link to={`/products/${cart.product.id}`} className='shopping-cart-ind-name'>{cart.product.name}</Link>

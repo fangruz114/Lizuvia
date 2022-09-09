@@ -34,7 +34,7 @@ function OrderItemDetails({ item, onClose, editStatus }) {
     return (
         <div className='order-detail-item-ind'>
             <div className='order-detail-item-img'>
-                <img src={item.imageUrl} alt='order-detail-ind-item-display' />
+                <img src={item.imageUrl} alt='order-detail-ind-item-display' onError={e => e.target.src = 'https://i.imgur.com/rIUtyi2.jpg'} />
                 <button onClick={deleteItem}>Remove</button>
             </div>
             <div className='order-detail-item-ind-info'>

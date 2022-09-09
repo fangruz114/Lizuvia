@@ -64,7 +64,7 @@ function ProductDetailPage() {
                         <div className='detail-page-left-panel'>
                             {product.images.length && (
                                 product.images.map(image => (
-                                    <img key={image.id} className='detail-page-img' src={image.url} alt='detail-page-product-showcase' />
+                                    <img key={image.id} className='detail-page-img' src={image.url} alt='detail-page-product-showcase' onError={e => e.target.src = 'https://i.imgur.com/rIUtyi2.jpg'} />
                                 ))
                             )}
                         </div>

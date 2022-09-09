@@ -27,7 +27,7 @@ function NavCartDropDown({ carts, count }) {
                 {showCarts && showCarts.map(cart => (
                     <Link key={cart.id} className='cart-drop-down-ind-item' to={`/products/${cart.product.id}`}>
                         <div className='cart-drop-down-item-img'>
-                            <img src={cart.product.images[0].url} alt='cart-drop-down-img-display' />
+                            <img src={cart.product.images[0].url} alt='cart-drop-down-img-display' onError={e => e.target.src = 'https://i.imgur.com/rIUtyi2.jpg'} />
                         </div>
                         <div className='cart-drop-down-item-info'>
                             <p>{cart.product.name}</p>

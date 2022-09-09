@@ -117,6 +117,7 @@ nav {
     margin: 0;
     background-color: #e6e3de;
     font-size: 11px;
+    text-decoration: none;
 
 }
 
@@ -247,6 +248,7 @@ nav {
 
 .cart-drop-down-item-info>p {
     margin: 5px 0 0 0;
+    overflow-wrap: anywhere;
 }
 
 .cart-drop-down-item-info>p:hover {

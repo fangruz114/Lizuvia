@@ -40,7 +40,7 @@ function AddToCartConfirm({ onClose, product, quantity }) {
                 <div className='cart-confirmation-left'>
                     <p className='cart-confirmation-left-title'>Added to your cart</p>
                     <div className='cart-confirmation-item'>
-                        <img src={product?.images[0].url} alt='cart-cnfirmation-item' />
+                        <img src={product?.images[0].url} alt='cart-cnfirmation-item' onError={e => e.target.src = 'https://i.imgur.com/rIUtyi2.jpg'} />
                         <div className='cart-confirmation-item-info'>
                             <p className='cart-confirmation-item-name'>{product?.name}</p>
                             <p>Item: {product?.id}</p>
