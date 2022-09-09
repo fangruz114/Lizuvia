@@ -8,7 +8,7 @@ function HomePage() {
     return (
         <div className='main-page'>
             <ImageScrollSec />
-            <img className='homepage-first-subtitle' src='https://i.imgur.com/vpxqsAs.png' alt='subtitle' />
+            <img className='homepage-first-subtitle' src='https://i.imgur.com/y8NVppY.png' alt='subtitle' />
             <div className='cozy-season-sec'>
                 <p>The Season of Cozy</p>
                 <Link to='/sign-up'>Shop Now</Link>
