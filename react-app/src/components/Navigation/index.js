@@ -1,4 +1,4 @@
-import { NavLink, Link, useLocation } from 'react-router-dom';
+import { NavLink, Link } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import { useEffect } from 'react';
 import SearchBar from '../SearchBar';
@@ -9,7 +9,6 @@ import NavCartDropDown from './NavCartDropDown';
 
 function NavBar() {
     const dispatch = useDispatch();
-    const location = useLocation();
     const user = useSelector(state => state.session.user);
     const carts = useSelector(state => Object.values(state.cart));
 
@@ -44,11 +43,11 @@ function NavBar() {
         return count;
     }
 
-    const checkActive = (loc) => {
-        if (!loc) return false;
-        const { pathname } = loc;
-        return pathname === "/products";
-    }
+    // const checkActive = (loc) => {
+    //     if (!loc) return false;
+    //     const { pathname } = loc;
+    //     return pathname === "/products";
+    // }
 
     return (
         <nav>
@@ -80,7 +79,7 @@ function NavBar() {
             </div>
             <div className='nav-menu-cover'>
                 <div className='nav-bottom'>
-                    <NavLink to='/products' activeClassName='active-navlink' isActive={() => checkActive(location)}>All Products</NavLink>
+                    <NavLink to='/products' activeClassName='active-navlink'>All Products</NavLink>
                     <NavLink to='/products/categories/furniture' activeClassName='active-navlink'>Furniture</NavLink>
                     <NavLink to='/products/categories/outdoor' activeClassName='active-navlink'>{`Outdoor & Garden`}</NavLink>
                     <NavLink to='/products/categories/bedding' activeClassName='active-navlink'>Bedding</NavLink>
