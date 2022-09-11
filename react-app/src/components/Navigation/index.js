@@ -44,9 +44,9 @@ function NavBar() {
         return count;
     }
 
-    const checkActive = (location) => {
-        if (!location) return false;
-        const { pathname } = location;
+    const checkActive = (loc) => {
+        if (!loc) return false;
+        const { pathname } = loc;
         return pathname === "/products";
     }
 
