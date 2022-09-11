@@ -1,7 +1,7 @@
-import { Link, useParams } from 'react-router-dom';
+import { Link, useParams, useHistory } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { getOrderDetails, getOrders } from '../../store/order';
+import { getOrderDetails, getOrders, cancelOrder } from '../../store/order';
 import OrderItemDetails from './OrderItemDetails';
 import { Modal } from '../../context/Modal';
 import CancelorderConfirm from './CancelOrderConfirm';
@@ -9,6 +9,7 @@ import './OrderDetailPage.css';
 
 function OrderDetailPage() {
     const dispatch = useDispatch();
+    const history = useHistory();
     const { id } = useParams();
     const orders = useSelector(state => state.orders.orders);
     const items = useSelector(state => state.orders.orderProducts);
@@ -40,7 +41,6 @@ function OrderDetailPage() {
     const verifyTimeForEditing = (timeString) => {
         const time = new Date(timeString);
         time.setHours(time.getHours() + 5);
-        console.log(time)
         if (time < new Date()) {
             return false
         } else return true;
@@ -48,6 +48,14 @@ function OrderDetailPage() {
 
     const closeEdit = () => {
         setEdit(false);
+    };
+
+    const saveEdit = async () => {
+        if (Object.values(items).length === 0) {
+            await dispatch(cancelOrder(id))
+                .then(() => setEdit(false))
+                .then(() => history.push('/orders'))
+        } else setEdit(!edit)
     };
 
     return (
@@ -58,9 +66,11 @@ function OrderDetailPage() {
                         <Link to='/orders'>{`< All orders`}</Link>
                         {verifyTimeForEditing(orders[id]?.createdAt) ? (
                             <div className='order-detail-edit-cancel-buttons'>
-                                <button onClick={() => setEdit(!edit)} className='order-detail-edit-button'>{edit ? `SAVE` : `EDIT ORDER`}</button>
-                                {edit ? null : (
+                                {edit ? (
+                                    <button onClick={saveEdit} className='order-detail-edit-button'>SAVE</button>
+                                ) : (
                                     <>
+                                        <button onClick={() => setEdit(!edit)} className='order-detail-edit-button'>EDIT ORDER</button>
                                         <button className='order-detail-cancel-button' onClick={() => setShowModal(true)}>CANCEL ORDER</button>
                                         {showModal && (
                                             <div className='cancel-order-confirm-modal'>
