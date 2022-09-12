@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { Link, useParams, Redirect } from 'react-router-dom';
+import { Link, useParams, Redirect, useHistory } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { getOneProduct } from '../../store/product';
 import './ProductDetailPage.css';
@@ -9,7 +9,9 @@ import { Modal } from '../../context/Modal';
 
 function ProductDetailPage() {
     const dispatch = useDispatch();
+    const history = useHistory();
     const { id } = useParams();
+    const user = useSelector(state => state.session.user);
     const product = useSelector(state => state.products[+id]);
     const [quantity, setQuantity] = useState(0);
     const [errors, setErrors] = useState([]);
@@ -38,15 +40,19 @@ function ProductDetailPage() {
 
     const addItem = async e => {
         e.preventDefault();
-        const newItem = { quantity };
-        const data = await dispatch(addToCart(id, newItem));
-        if (data) {
-            setErrors(data);
+        if (user) {
+            const newItem = { quantity };
+            const data = await dispatch(addToCart(id, newItem));
+            if (data) {
+                setErrors(data);
+            } else {
+                setErrors([]);
+                setShowModal(true);
+            }
         } else {
-            setErrors([]);
-            setShowModal(true);
+            history.push('/login');
         }
-    }
+    };
 
     if (isLoaded && !product) {
         return <Redirect to='/404' />;
