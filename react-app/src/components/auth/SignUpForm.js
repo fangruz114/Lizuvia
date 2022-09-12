@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux'
 import { Redirect, Link } from 'react-router-dom';
 import { signUp, login } from '../../store/session';
+import { getCarts } from '../../store/cart';
 
 const SignUpForm = () => {
   const [errors, setErrors] = useState([]);
@@ -28,6 +29,7 @@ const SignUpForm = () => {
   const loginDemoUser = async (e) => {
     e.preventDefault();
     const data = await dispatch(login('demo@aa.io', 'password'))
+      .then(() => dispatch(getCarts()));
     if (data) {
       setErrors(data)
     }
