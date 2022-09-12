@@ -105,6 +105,7 @@
     height: 42px;
     background-color: rgb(245, 244, 242);
     border: 1px solid rgb(207, 202, 193);
+    cursor: pointer;
 }
 
 .detail-page-purchase-quantity input {
