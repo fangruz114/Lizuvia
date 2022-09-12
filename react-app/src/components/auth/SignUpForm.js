@@ -28,6 +28,7 @@ const SignUpForm = () => {
   const loginDemoUser = async (e) => {
     e.preventDefault();
     const data = await dispatch(login('demo@aa.io', 'password'))
+      .then(() => dispatch(getCarts()));
     if (data) {
       setErrors(data)
     }

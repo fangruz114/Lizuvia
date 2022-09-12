@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { Redirect, Link } from 'react-router-dom';
+import { getCarts } from '../../store/cart';
 import { login } from '../../store/session';
 import './LoginForm.css';
 
@@ -22,6 +23,7 @@ const LoginForm = () => {
   const loginDemoUser = async (e) => {
     e.preventDefault();
     const data = await dispatch(login('demo@aa.io', 'password'))
+      .then(() => dispatch(getCarts()));
     if (data) {
       setErrors(data)
     }
