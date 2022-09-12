@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux'
 import { Redirect, Link } from 'react-router-dom';
 import { signUp, login } from '../../store/session';
+import { getCarts } from '../../store/cart';
 
 const SignUpForm = () => {
   const [errors, setErrors] = useState([]);
