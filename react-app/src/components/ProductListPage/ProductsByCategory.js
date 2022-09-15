@@ -6,6 +6,7 @@ import ProductList from './ProductList';
 import './ProductListPage.css';
 
 function ProductsByCategory() {
+
     const category_map = {
         'furniture': 'Furniture',
         'outdoor': 'Outdoor & Garden',
