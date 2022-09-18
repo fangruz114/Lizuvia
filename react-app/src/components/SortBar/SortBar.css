@@ -29,4 +29,10 @@
     font-weight: 300;
     line-height: 1rem;
     padding: 0.6875rem 2.5rem 0.6875rem 0.75rem;
+    cursor: pointer;
+}
+
+.sort-bar select:focus {
+    outline: none;
+    border-color: black;
 }

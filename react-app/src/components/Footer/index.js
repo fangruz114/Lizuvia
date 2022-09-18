@@ -28,6 +28,13 @@ function Footer() {
                         target="_blank"
                     >
                         <i className="fa-brands fa-linkedin"></i>
+                    </a>
+                    <a
+                        href="https://fangruzhou.codes"
+                        rel="noopener noreferrer"
+                        target="_blank"
+                    >
+                        <img src="https://img.icons8.com/ios-filled/50/000000/portfolio.png" />
                         <p className="developer-name">Fangru Zhou</p>
                     </a>
                 </div>

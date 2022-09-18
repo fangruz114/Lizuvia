@@ -17,11 +17,11 @@ nav {
     justify-content: space-between;
     align-items: center;
     height: 74px;
-    max-width: 1640px;
-    min-width: 990px;
+    width: 100vw;
+    /* min-width: 990px; */
     margin-left: auto;
     margin-right: auto;
-    padding: 0 20px;
+    /* padding: 0 20px; */
     position: relative;
     line-height: 10px;
 }
@@ -50,6 +50,7 @@ nav {
     align-items: center;
     width: 17%;
     height: 26px;
+    padding-right: 20px;
 }
 
 .nav-profile-cart .nav-orders-signin {

@@ -1,6 +1,6 @@
 .product-list-cover {
     display: flex;
-    justify-content: center;
+    justify-content: flex-start;
     min-height: 80vh;
     display: flex;
     flex-direction: column;
@@ -51,6 +51,7 @@
     width: 100%;
     height: auto;
     max-height: 407px;
+    max-width: 453px;
     display: flex;
     justify-content: center;
 }
