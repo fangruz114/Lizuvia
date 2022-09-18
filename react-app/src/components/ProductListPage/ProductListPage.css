@@ -56,6 +56,10 @@
     justify-content: center;
 }
 
+.product-card .product-image img {
+    max-width: 453px;
+}
+
 .product-card-info a,
 .product-card-info a .product-card-name {
     display: flex;
