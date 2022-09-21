@@ -102,3 +102,20 @@ span.required {
 span.optional {
     color: rgb(130, 130, 130);
 }
+
+.product-form-image-upload {
+    width: 100%;
+    margin-top: 20px;
+}
+
+.product-form-image-upload>p {
+    margin: 5px 0;
+    line-height: 24px;
+    font-size: 14px;
+}
+
+.product-form-image-upload .image-upload-guide-title {
+    font-size: 15px;
+    font-weight: bold;
+    margin-bottom: 0;
+}
