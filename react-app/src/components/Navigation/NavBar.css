@@ -18,10 +18,9 @@ nav {
     align-items: center;
     height: 74px;
     width: 100vw;
-    /* min-width: 990px; */
+    max-width: 1680px;
     margin-left: auto;
     margin-right: auto;
-    /* padding: 0 20px; */
     position: relative;
     line-height: 10px;
 }

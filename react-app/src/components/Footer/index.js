@@ -34,7 +34,7 @@ function Footer() {
                         rel="noopener noreferrer"
                         target="_blank"
                     >
-                        <img src="https://img.icons8.com/ios-filled/50/000000/portfolio.png" />
+                        <img src="https://img.icons8.com/ios-filled/50/000000/portfolio.png" alt='portfolio-site' />
                         <p className="developer-name">Fangru Zhou</p>
                     </a>
                 </div>

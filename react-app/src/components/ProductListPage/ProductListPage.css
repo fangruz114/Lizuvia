@@ -57,7 +57,9 @@
 }
 
 .product-card .product-image img {
-    max-width: 453px;
+    width: 452px;
+    height: 407px;
+    object-fit: cover;
 }
 
 .product-card-info a,
