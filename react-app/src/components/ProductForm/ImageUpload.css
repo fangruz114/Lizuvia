@@ -1,0 +1,56 @@
+.image-upload-wrapper {
+    width: 100%;
+    height: auto;
+    margin: 25px 0;
+}
+
+.existing-uploaded-images {
+    margin-top: 5px;
+    width: 100px;
+    height: 100px;
+    object-fit: cover;
+}
+
+.existing-uploaded-images-wrapper .remove-image-button {
+    width: 30px;
+    height: 30px;
+    position: relative;
+    top: 25px;
+    left: 80px;
+    z-index: 10;
+    background-color: white;
+    color: black;
+    font-size: 14px;
+    font-weight: bold;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+
+#file-upload::file-selector-button,
+.upload-picture-button {
+    width: 100px;
+    height: 42px;
+    background-color: black;
+    color: white;
+    font-size: 14px;
+    font-weight: bold;
+    margin: 0 10px 0 0;
+    cursor: pointer;
+    border: none;
+}
+
+#file-upload {
+    margin-right: 20px;
+    cursor: pointer;
+}
+
+.upload-picture-image-container {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+.existing-uploaded-images-wrapper {
+    width: 120px;
+}

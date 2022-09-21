@@ -1,7 +1,8 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 import { addProduct } from '../../store/product';
+import ImageUpload from './ImageUpload';
 import './ProductForm.css';
 
 function AddProductForm() {
@@ -19,20 +20,47 @@ function AddProductForm() {
     const [url3, setUrl3] = useState('');
     const [url4, setUrl4] = useState('');
     const [url5, setUrl5] = useState('');
+    const [images, setImages] = useState([]);
+
+    useEffect(() => {
+        if (images && images.length === 1) {
+            setUrl1(images[0]);
+        } else if (images && images.length === 2) {
+            setUrl1(images[0]);
+            setUrl2(images[1]);
+        } else if (images && images.length === 3) {
+            setUrl1(images[0]);
+            setUrl2(images[1]);
+            setUrl3(images[2]);
+        } else if (images && images.length === 4) {
+            setUrl1(images[0]);
+            setUrl2(images[1]);
+            setUrl3(images[2]);
+            setUrl4(images[3]);
+        } else if (images && images.length >= 5) {
+            setUrl1(images[0]);
+            setUrl2(images[1]);
+            setUrl3(images[2]);
+            setUrl4(images[3]);
+            setUrl5(images[4]);
+        }
+    }, [images]);
 
     const createProduct = async (e) => {
         e.preventDefault();
+
         const newProduct = {
             name: name.trim(),
             category: category.trim(),
             description: description.trim(),
             price,
-            url1: url1.trim(),
+            url1: url1?.trim(),
             url2: url2?.trim(),
             url3: url3?.trim(),
             url4: url4?.trim(),
             url5: url5?.trim(),
         };
+        console.log(newProduct);
         const data = await dispatch(addProduct(newProduct));
 
         if (data) {
@@ -104,50 +132,11 @@ function AddProductForm() {
                             step='0.01'
                         />
                     </div>
-                    <div className="product-form-element">
-                        <label htmlFor='url1'>Image #1 url address <span className='required'>(required)</span></label>
-                        <input
-                            name="url1"
-                            type='text'
-                            value={url1}
-                            onChange={(e) => setUrl1(e.target.value)}
-                        />
-                    </div>
-                    <div className="product-form-element">
-                        <label htmlFor='url2'>Image #2 url address <span className='optional'>(optional)</span></label>
-                        <input
-                            name="url2"
-                            type='text'
-                            value={url2}
-                            onChange={(e) => setUrl2(e.target.value)}
-                        />
-                    </div>
-                    <div className="product-form-element">
-                        <label htmlFor='url3'>Image #3 url address <span className='optional'>(optional)</span></label>
-                        <input
-                            name="url3"
-                            type='text'
-                            value={url3}
-                            onChange={(e) => setUrl3(e.target.value)}
-                        />
-                    </div>
-                    <div className="product-form-element">
-                        <label htmlFor='url4'>Image #4 url address <span className='optional'>(optional)</span></label>
-                        <input
-                            name="url4"
-                            type='text'
-                            value={url4}
-                            onChange={(e) => setUrl4(e.target.value)}
-                        />
-                    </div>
-                    <div className="product-form-element">
-                        <label htmlFor='url5'>Image #5 url address <span className='optional'>(optional)</span></label>
-                        <input
-                            name="url5"
-                            type='text'
-                            value={url5}
-                            onChange={(e) => setUrl5(e.target.value)}
-                        />
+                    <div className='product-form-image-upload'>
+                        <p className='image-upload-guide-title'>Please select your image file and click "Upload" to successfully add your image one by one. </p>
+                        <p>Only .png, .jpg, .jpeg and .gif files can be accepted.</p>
+                        <p>Minimum of ONE image is required. Maximum of FIVE images are allowed.</p>
+                        <ImageUpload images={images} setImages={setImages} />
                     </div>
                     <button className='product-form-btn' type="submit">ADD PRODUCT</button>
                 </form>
