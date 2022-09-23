@@ -1,0 +1,173 @@
+.favorites-wrapper {
+    width: 100vw;
+    min-height: 80vh;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: flex-start;
+}
+
+.favorites-inner {
+    max-width: 1480px;
+    width: 100%;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    padding: 10px 20px;
+}
+
+.favorites-back-btn {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    font-size: 13px;
+    padding: 1rem 0.25rem;
+    margin: 0;
+    height: 24px;
+}
+
+.favorites-back-btn a {
+    text-decoration: none;
+    cursor: pointer;
+    margin: 0;
+}
+
+.favorites-back-btn p {
+    padding: 8px;
+}
+
+.favorites-back-btn p span {
+    padding-left: 8px;
+    font-weight: bold;
+}
+
+.favorites-title {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 1rem 0.25rem;
+}
+
+.favorites-title-left {
+    display: flex;
+    flex-direction: column;
+}
+
+.favorites-title-left p {
+    font-size: 13px;
+    line-height: 24px;
+    margin: 0;
+}
+
+.favorites-title-left p.favorites-title-cap {
+    font-size: 1rem;
+    font-weight: bold;
+    line-height: 1.2;
+    letter-spacing: 0.125rem;
+}
+
+.favorites-title a {
+    text-decoration: none;
+    width: 13.5rem;
+    order: 2;
+    text-align: center;
+    font-size: 0.9rem;
+    font-weight: 600;
+    letter-spacing: 0.125rem;
+    border: none;
+    background-color: black;
+    color: white;
+    padding: 0.75rem;
+    cursor: pointer;
+    margin-right: 0.75rem;
+}
+
+.Favorites-items-list {
+    width: 100%;
+    height: auto;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+}
+
+.Favorites-items-list .favor-item-ind {
+    text-decoration: none;
+    width: 23.5%;
+    min-width: 300px;
+    padding: 0 0.25rem;
+    margin: 0 0.25rem;
+}
+
+.favor-item-ind a.favor-item-link {
+    text-decoration: none;
+    width: 100%;
+    height: 100%;
+}
+
+.favor-item-ind button.favor-btn {
+    position: relative;
+    height: 0;
+    top: 20px;
+    left: 10px;
+    z-index: 5;
+}
+
+.favor-item-ind button.favor-btn .fa-heart {
+    color: rgb(183, 2, 0);
+}
+
+.favor-item-link img {
+    width: 100%;
+    height: auto;
+}
+
+.favor-item-link p {
+    font-size: 0.875rem;
+    margin: 0.75rem 0 0.25rem 0;
+    overflow-wrap: anywhere;
+    max-height: 2.4rem;
+    text-transform: capitalize;
+}
+
+.no-favor-wrapper {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    height: auto;
+}
+
+.no-favor-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    padding: 1.5rem 0.25rem
+}
+
+.no-favor-content .fa-heart {
+    font-size: 40px;
+    color: rgb(175, 25, 49);
+}
+
+.no-favor-content p {
+    max-width: 20rem;
+    font-size: 1rem;
+    margin: 0;
+    line-height: 24px;
+}
+
+.no-favor-content .no-favor-title {
+    width: 28rem;
+    height: 29px;
+    font-size: 1.625rem;
+    font-weight: 400;
+    margin: 0.75rem 0;
+    letter-spacing: 0.01625rem;
+    text-align: center;
+    padding: 15px 0 5px 0;
+}

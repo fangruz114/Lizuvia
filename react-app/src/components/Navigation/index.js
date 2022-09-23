@@ -20,6 +20,7 @@ function NavBar() {
                 <li><Link to={`/users/${user.id}`}>My Account</Link></li>
                 <li><Link to={`/orders`}>My Orders</Link></li>
                 <li><Link to={`/users/${user.id}/products`}>My Products</Link></li>
+                <li><Link to={`/favorites`}>My Favorites</Link></li>
                 <li><LogoutButton /></li>
             </ul>
         )

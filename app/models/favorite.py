@@ -18,7 +18,7 @@ class Favorite(db.Model):
             'productId': self.product_id,
             'userId': self.user_id,
             'user': self.user.to_dict_no_additions(),
-            'product': self.product.to_dict_no_additions()
+            'product': self.product.to_dict_with_images()
         }
 
     def to_dict_no_additions(self):
