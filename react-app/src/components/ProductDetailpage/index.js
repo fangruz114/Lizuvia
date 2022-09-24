@@ -6,6 +6,7 @@ import './ProductDetailPage.css';
 import { addToCart } from '../../store/cart';
 import AddToCartConfirm from './AddToCartConfirm';
 import { Modal } from '../../context/Modal';
+import Favor from '../Favorites';
 
 function ProductDetailPage() {
     const dispatch = useDispatch();
@@ -76,7 +77,10 @@ function ProductDetailPage() {
                         </div>
                         <div className='detail-page-right-panel'>
                             <p className='detail-page-product-name'>{product.name}</p>
-                            <p className='detail-page-product-price'>${product.price}</p>
+                            <div className='detail-page-price-favor'>
+                                <p className='detail-page-product-price'>${product.price}</p>
+                                <Favor id={product.id} />
+                            </div>
                             <div>
                                 {errors && errors.map((error, ind) => (
                                     <div key={ind} className="form-errors">{error}</div>
@@ -99,8 +103,8 @@ function ProductDetailPage() {
                             <p className='detail-page-description'>{product.description}</p>
                             {product.bulletPoints && (
                                 <ul className='detail-page-bullet-points'>
-                                    {product.bulletPoints.split(',').map(bp => (
-                                        <li key={product.id}>{bp}</li>
+                                    {product.bulletPoints.split(',').map((bp, idx) => (
+                                        <li key={idx}>{bp}</li>
                                     ))}
                                 </ul>
                             )}

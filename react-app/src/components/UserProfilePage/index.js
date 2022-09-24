@@ -44,6 +44,7 @@ function User() {
           <NavLink to={`/users/${userId}`} activeClassName='active-profile-link'>{user.firstName} {user.lastName}'s Account</NavLink>
           <NavLink to={`/orders`} activeClassName='active-profile-link'>Order History</NavLink>
           <NavLink to={`/users/${userId}/products`} activeClassName='active-profile-link'>Manage Products</NavLink>
+          <NavLink to={`/favorites`} activeClassName='active-profile-link'>Favorites</NavLink>
         </div>
         <div className='user-profile-user-info'>
           <h1>Hello, {user.firstName} {user.lastName}</h1>

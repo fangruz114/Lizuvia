@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom';
 import { useState } from 'react';
 import SortBar from '../SortBar';
+import Favor from '../Favorites';
 import './ProductListPage.css';
 
 function ProductList({ products }) {
@@ -25,6 +26,7 @@ function ProductList({ products }) {
                 {products && (
                     products.map(product => (
                         <div className='product-card' key={product.id}>
+                            <Favor id={product.id} />
                             <Link to={`/products/${product.id}`}>
                                 <div className='product-image'>
                                     <img className='product-card-img-display' src={product.images[0].url} alt='product-card-display' onError={e => e.target.src = 'https://i.imgur.com/rIUtyi2.jpg'} />
