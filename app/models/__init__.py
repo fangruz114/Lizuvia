@@ -6,3 +6,4 @@ from .order import Order
 from .order_product import Order_Product
 from .cart import Cart
 from .review import Review
+from .favorite import Favorite

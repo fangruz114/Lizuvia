@@ -21,6 +21,8 @@ class Product(db.Model):
         "Image", back_populates="product", cascade='all, delete')
     reviews = db.relationship(
         "Review", back_populates='product', cascade='all, delete')
+    favorites = db.relationship(
+        "Favorite", back_populates='product', cascade='all, delete')
 
     def to_dict(self):
         return {
@@ -36,7 +38,8 @@ class Product(db.Model):
             'user': self.user.to_dict_no_additions(),
             'carts': [c.to_dict_no_additions() for c in self.carts],
             'images': [i.to_dict_no_additions() for i in self.images],
-            'reviews': [r.to_dict_no_additions() for r in self.reviews]
+            'reviews': [r.to_dict_no_additions() for r in self.reviews],
+            'favorites': [f.to_dict_no_additions() for f in self.favorites],
         }
 
     def to_dict_with_images(self):

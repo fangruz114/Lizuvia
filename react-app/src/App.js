@@ -19,6 +19,7 @@ import ShoppingCartPage from './components/ShoppingCartPage';
 import OrderHistoryPage from './components/OrderHistoryPage';
 import OrderDetailPage from './components/OrderDetailPage';
 import PageNotFound from './components/PageNotFound';
+import FavoritesPage from './components/FavoritesPage';
 
 function App() {
   const [loaded, setLoaded] = useState(false);
@@ -77,6 +78,9 @@ function App() {
         </ProtectedRoute>
         <ProtectedRoute path='/orders' exact={true} >
           <OrderHistoryPage />
+        </ProtectedRoute>
+        <ProtectedRoute path='/favorites' exact={true}>
+          <FavoritesPage />
         </ProtectedRoute>
         <Route>
           <PageNotFound />

@@ -20,6 +20,8 @@ class User(db.Model, UserMixin):
         'Order', back_populates='user', cascade='all, delete')
     reviews = db.relationship(
         'Review', back_populates='user', cascade='all, delete')
+    favorites = db.relationship(
+        'Favorite', back_populates='user', cascade='all, delete')
 
     @property
     def password(self):
@@ -41,7 +43,8 @@ class User(db.Model, UserMixin):
             'products': [p.to_dict_no_additions() for p in self.products],
             'carts': [c.to_dict_no_additions() for c in self.carts],
             'orders': [o.to_dict_no_additions() for o in self.orders],
-            'reviews': [r.to_dict_no_additions() for r in self.reviews]
+            'reviews': [r.to_dict_no_additions() for r in self.reviews],
+            'favorites': [f.to_dict_no_additions() for f in self.favorites],
         }
 
     def to_dict_no_additions(self):

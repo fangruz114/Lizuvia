@@ -1,4 +1,3 @@
-from email import contentmanager
 from app.models import db, Review
 
 
