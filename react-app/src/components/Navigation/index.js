@@ -34,8 +34,8 @@ function NavBar() {
     }
 
     useEffect(() => {
-        dispatch(getCarts());
-    }, [dispatch])
+        if (user) dispatch(getCarts());
+    }, [dispatch, user])
 
     const totalItem = (items) => {
         let count = 0;

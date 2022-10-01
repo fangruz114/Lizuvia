@@ -1,6 +1,7 @@
 const LOAD_FAVORS = 'favors/LOAD_FAVORS';
 const ADD_FAVOR = 'favors/ADD_FAVOR';
 const DELETE_FAVOR = 'favors/DELETE_FAVOR';
+const RESET_FAVOR = 'favors/RESET_FAVOR';
 
 const loadFavors = (payload) => ({
     type: LOAD_FAVORS,
@@ -16,6 +17,10 @@ const removeFavor = (id) => ({
     type: DELETE_FAVOR,
     id,
 })
+
+export const resetFavors = () => ({
+    type: RESET_FAVOR,
+});
 
 // thunk
 export const getFavors = () => async dispatch => {
@@ -77,6 +82,9 @@ const favorReducer = (state = initialState, action) => {
         case DELETE_FAVOR:
             newState = Object.assign({}, state);
             delete newState[action.id];
+            return newState;
+        case RESET_FAVOR:
+            newState = {};
             return newState;
         default:
             return state;
