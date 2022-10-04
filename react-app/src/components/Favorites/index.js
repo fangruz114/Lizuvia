@@ -29,7 +29,7 @@ function Favor({ id }) {
         if (user) {
             await dispatch(updateFavor(id));
             setShowMenu(true);
-            // setTimeout(() => setShowMenu(false), 4000);
+            setTimeout(() => setShowMenu(false), 4000);
         }
         else history.push('/login');
     }

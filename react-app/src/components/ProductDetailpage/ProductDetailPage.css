@@ -170,3 +170,10 @@
     font-size: 14px;
     line-height: 20px;
 }
+
+.detail-page-price-favor .favor-confirmation-window {
+    position: fixed;
+    left: 0;
+    top: 170px;
+    z-index: 100000;
+}
