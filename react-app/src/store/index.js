@@ -5,6 +5,7 @@ import productReducer from './product';
 import cartReducer from './cart';
 import orderReducer from './order';
 import favorReducer from './favorite';
+import reviewReducer from './review';
 
 const rootReducer = combineReducers({
   session,
@@ -12,6 +13,7 @@ const rootReducer = combineReducers({
   cart: cartReducer,
   orders: orderReducer,
   favorites: favorReducer,
+  reviews: reviewReducer,
 });
 
 

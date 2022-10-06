@@ -4,9 +4,13 @@ import { useDispatch, useSelector } from 'react-redux';
 import { getOneProduct } from '../../store/product';
 import './ProductDetailPage.css';
 import { addToCart } from '../../store/cart';
+import { getProductReviews } from '../../store/review';
 import AddToCartConfirm from './AddToCartConfirm';
 import { Modal } from '../../context/Modal';
 import Favor from '../Favorites';
+import StarRatings from 'react-star-ratings';
+import ReviewPreview from './ReviewPreview';
+import AllReviewModal from './AllReviewModal';
 
 function ProductDetailPage() {
     const dispatch = useDispatch();
@@ -14,10 +18,14 @@ function ProductDetailPage() {
     const { id } = useParams();
     const user = useSelector(state => state.session.user);
     const product = useSelector(state => state.products[+id]);
+    const reviews = useSelector(state => Object.values(state.reviews));
+
     const [quantity, setQuantity] = useState(0);
     const [errors, setErrors] = useState([]);
     const [isLoaded, setIsLoaded] = useState(false);
     const [showModal, setShowModal] = useState(false);
+    const [showReviews, setShowReviews] = useState(false);
+    const [reviewPreview, setReviewPreview] = useState(false);
 
     const category_map = {
         'Furniture': 'furniture',
@@ -31,6 +39,7 @@ function ProductDetailPage() {
 
     useEffect(() => {
         dispatch(getOneProduct(+id))
+            .then(() => dispatch(getProductReviews(+id)))
             .then(() => setIsLoaded(true))
     }, [dispatch, id]);
 
@@ -55,6 +64,14 @@ function ProductDetailPage() {
         }
     };
 
+    const avgRating = (array) => {
+        let total = 0;
+        for (let ele of array) {
+            total += Number(ele.rating)
+        }
+        return Number((total / array.length).toFixed(2))
+    }
+
     if (isLoaded && !product) {
         return <Redirect to='/404' />;
     }
@@ -77,6 +94,24 @@ function ProductDetailPage() {
                         </div>
                         <div className='detail-page-right-panel'>
                             <p className='detail-page-product-name'>{product.name}</p>
+                            {reviews.length > 0 && (
+                                <button onClick={() => setShowReviews(true)} className='detail-page-review-rating'>
+                                    <StarRatings
+                                        rating={reviews.length > 0 ? avgRating(reviews) : 0}
+                                        starDimension="17px"
+                                        starSpacing="0px"
+                                        starRatedColor='black'
+                                    />
+                                    <p>{reviews.length} Reviews</p>
+                                </button>
+                            )}
+                            {showReviews && (
+                                <div className='all-review-list-model'>
+                                    <Modal onClose={() => setShowReviews(false)}>
+                                        <AllReviewModal reviews={reviews} avgRating={avgRating} onClose={() => setShowReviews(false)} />
+                                    </Modal>
+                                </div>
+                            )}
                             <div className='detail-page-price-favor'>
                                 <p className='detail-page-product-price'>${product.price}</p>
                                 <Favor id={product.id} />
@@ -116,6 +151,22 @@ function ProductDetailPage() {
                                     ))}
                                 </ul>
                             )} */}
+                            <button className='detail-page-review-sec-title' onClick={() => setReviewPreview(!reviewPreview)}>
+                                <p>REVIEWS</p>
+                                {!reviewPreview && (
+                                    <div className='review-section-title-rating'>
+                                        <p className='review-title-review-count'>({reviews.length})</p>
+                                        <StarRatings
+                                            rating={reviews.length > 0 ? avgRating(reviews) : 0}
+                                            starDimension="17px"
+                                            starSpacing="0px"
+                                            starRatedColor='black'
+                                        />
+                                    </div>
+                                )}
+                                <p className='review-section-unfold-sign'>{reviewPreview ? '-' : '+'}</p>
+                            </button>
+                            {reviewPreview && <ReviewPreview reviews={reviews} avgRating={avgRating} setShowReviews={setShowReviews} />}
                         </div>
                     </div>
                 </div>
