@@ -1,0 +1,43 @@
+.all-review-modal {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 85vw;
+    height: 400px;
+    max-height: 88vh;
+    padding: 24px 48px;
+    background: white;
+    box-shadow: 2px 2px 2px 2px rgba(0, 0, 0, 0.15);
+    border-radius: 5px;
+    overflow: hidden;
+}
+
+.all-review-modal-content-wrapper {
+    width: 100%;
+    overflow-y: auto;
+    overflow-x: hidden;
+    height: 90%;
+    margin-bottom: 24px;
+}
+
+.all-review-modal-title {
+    width: 100%;
+    margin: 0 0 24px;
+    font-weight: 600;
+    font-size: 20px;
+    line-height: 24px;
+}
+
+.review-modal-content {
+    display: flex;
+    flex-direction: row;
+}
+
+.review-modal-content .review-modal-top {
+    width: 300px;
+}
+
+.review-modal-content .review-menu-review-list {
+    margin: 0 20px 0 30px;
+}
