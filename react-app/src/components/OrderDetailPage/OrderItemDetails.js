@@ -2,11 +2,14 @@ import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { editOrder, removeItem } from '../../store/order';
+import { Modal } from '../../context/Modal';
+import ReviewForm from '../ReviewForm';
 
 function OrderItemDetails({ item, onClose, editStatus }) {
     const dispatch = useDispatch();
     const [quantity, setQuantity] = useState(item.quantity);
     const [errors, setErrors] = useState([]);
+    const [showReviewForm, setShowReviewForm] = useState(false);
 
     const updateQuantity = async (e) => {
         e.preventDefault();
@@ -76,7 +79,14 @@ function OrderItemDetails({ item, onClose, editStatus }) {
                 )}
             </div>
             <div className='order-detail-ind-item-review-btn'>
-                <button>WRITE A REVIEW</button>
+                <button onClick={() => setShowReviewForm(true)}>WRITE A REVIEW</button>
+                {showReviewForm && (
+                    <div className='review-form-modal'>
+                        <Modal onClose={() => setShowReviewForm(false)}>
+                            <ReviewForm onClose={() => setShowReviewForm(false)} review={null} product={item} />
+                        </Modal>
+                    </div>
+                )}
             </div>
         </div >
     )

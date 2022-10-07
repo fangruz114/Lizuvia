@@ -27,7 +27,7 @@ class Review(db.Model):
             'userId': self.user_id,
             'createdAt': self.created_at,
             'user': self.user.to_dict_no_additions(),
-            'product': self.product.to_dict_no_additions()
+            'product': self.product.to_dict_with_images()
         }
 
     def to_dict_no_additions(self):

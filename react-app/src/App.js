@@ -20,6 +20,7 @@ import OrderHistoryPage from './components/OrderHistoryPage';
 import OrderDetailPage from './components/OrderDetailPage';
 import PageNotFound from './components/PageNotFound';
 import FavoritesPage from './components/FavoritesPage';
+import UserReviewPage from './components/UserReviewPage';
 
 function App() {
   const [loaded, setLoaded] = useState(false);
@@ -81,6 +82,9 @@ function App() {
         </ProtectedRoute>
         <ProtectedRoute path='/favorites' exact={true}>
           <FavoritesPage />
+        </ProtectedRoute>
+        <ProtectedRoute path='/reviews' exact={true}>
+          <UserReviewPage />
         </ProtectedRoute>
         <Route>
           <PageNotFound />
