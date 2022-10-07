@@ -1,0 +1,105 @@
+.review-form-wrapper {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 85vw;
+    max-width: 900px;
+    height: auto;
+    max-height: 88vh;
+    padding: 12px 24px 24px 24px;
+    background: white;
+    box-shadow: 2px 2px 2px 2px rgba(0, 0, 0, 0.15);
+    border-radius: 5px;
+    overflow: auto;
+    display: flex;
+    flex-direction: column;
+}
+
+.review-form-wrapper .cart-confirmation-modal-close {
+    margin: 0;
+    padding: 0;
+}
+
+.review-form-main {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    width: 100%;
+}
+
+.review-form-left-product-info {
+    width: 25%;
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+}
+
+.review-form-left-product-info img {
+    width: 100%;
+    height: auto;
+    margin: 0 0 10px 0;
+}
+
+.review-form-left-product-info p {
+    width: 100%;
+    font-size: 18px;
+    font-weight: 700;
+    line-height: 20px;
+    overflow-wrap: anywhere;
+}
+
+.review-form-right-review-content {
+    width: 75%;
+    padding: 0 24px;
+}
+
+.review-form-title {
+    padding: 0 12px;
+    font-size: 16px;
+    font-weight: 700;
+    overflow-wrap: anywhere;
+}
+
+.review-form-notes {
+    font-size: 13px;
+    padding: 0 20px;
+    margin: 0;
+}
+
+.review-form-element {
+    border-top: 1px solid #ddd;
+    padding: 10px 20px;
+}
+
+.review-form-element label {
+    font-size: 14px;
+    font-weight: bold;
+    padding: 0 10px 0 0;
+}
+
+.review-form-element input,
+.review-form-element textarea {
+    width: 100%;
+    margin: 10px 0;
+}
+
+.review-form-element input {
+    height: 30px;
+}
+
+.review-form-btn {
+    color: white;
+    background-color: black;
+    border: 1px solid black;
+    font-weight: 700;
+    font-size: 13px;
+    line-height: 15px;
+    width: 120px;
+    height: 29px;
+    margin: 10px 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}
