@@ -60,7 +60,7 @@ function AddProductForm() {
             url4: url4?.trim(),
             url5: url5?.trim(),
         };
-        console.log(newProduct);
+
         const data = await dispatch(addProduct(newProduct));
 
         if (data) {
