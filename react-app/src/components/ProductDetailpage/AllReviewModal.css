@@ -4,6 +4,7 @@
     left: 50%;
     transform: translate(-50%, -50%);
     width: 85vw;
+    max-width: 900px;
     height: 400px;
     max-height: 88vh;
     padding: 24px 48px;
