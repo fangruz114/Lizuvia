@@ -40,7 +40,6 @@ const deleteOrder = (id) => ({
 export const getOrders = () => async dispatch => {
     const response = await fetch('/api/orders');
     const data = await response.json();
-    console.log('orders', data);
     if (response.ok) {
         await dispatch(loadOrders(data.orders));
         return null;

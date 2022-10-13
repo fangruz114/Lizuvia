@@ -48,7 +48,6 @@ export const updateFavor = (id) => async dispatch => {
     });
     if (response.ok) {
         const data = await response.json();
-        console.log('data', data)
         if (data.id) {
             await dispatch(removeFavor(data.id));
             return null;

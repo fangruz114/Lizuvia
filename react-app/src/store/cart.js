@@ -65,7 +65,6 @@ export const addToCart = (id, newItem) => async dispatch => {
 
 export const updateCart = (id, item) => async dispatch => {
     const { quantity } = item;
-    console.log('quantity', quantity)
     const response = await fetch(`/api/cart/${id}`, {
         method: "PUT",
         headers: {

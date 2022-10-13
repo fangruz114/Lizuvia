@@ -32,7 +32,7 @@ function ReviewPreview({ reviews, avgRating, setShowReviews }) {
                 {reviews.length > 0 && (
                     <>
                         {reviewDisplay.map(review => (
-                            <div className='review-menu-ind-review'>
+                            <div key={review.id} className='review-menu-ind-review'>
                                 <p className='review-item-title'>{review.title}</p>
                                 <StarRatings
                                     rating={Number(review.rating)}
