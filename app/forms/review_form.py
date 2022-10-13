@@ -9,4 +9,4 @@ class ReviewForm(FlaskForm):
     title = StringField('title', validators=[DataRequired('Title is required.'), Length(
         min=1, max=50, message='Title is too long. Max 50 characters')])
     content = StringField('content', validators=[DataRequired('Review content is required.'), Length(
-        min=1, max=2000, message='Review content is too long. Max 2000 characters')])
+        min=1, max=990, message='Review content is too long. Max 990 characters')])

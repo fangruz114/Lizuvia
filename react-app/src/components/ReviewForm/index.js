@@ -112,7 +112,7 @@ function ReviewForm({ onClose, review, product }) {
                                         rows='6'
                                         cols='74'
                                         value={content}
-                                        maxLength='2000'
+                                        maxLength='990'
                                         onChange={(e) => setContent(e.target.value)}
                                     />
                                 </div>
