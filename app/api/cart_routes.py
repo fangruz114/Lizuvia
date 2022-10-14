@@ -24,7 +24,10 @@ def add_item_to_cart(id):
         cart_item = Cart.query.filter(
             Cart.product_id == id, Cart.user_id == current_user.id).one_or_none()
         if cart_item:
-            cart_item.quantity = cart_item.quantity + form.data['quantity']
+            if cart_item.quantity + form.data['quantity'] <= 99:
+                cart_item.quantity = cart_item.quantity + form.data['quantity']
+            else:
+                cart_item.quantity = 99
             db.session.commit()
             return cart_item.to_dict()
         else:

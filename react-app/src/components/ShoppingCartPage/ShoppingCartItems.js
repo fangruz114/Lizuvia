@@ -44,10 +44,10 @@ function ShoppingCartItems({ cart }) {
                     <div className='shopping-cart-ind-qty'>
                         <input
                             type='number'
-                            step='1' min='0' max='99'
+                            step='1' min='1' max='99'
                             maxLength='2'
                             value={quantity}
-                            onChange={e => setQuantity(parseInt(e.target.value))}
+                            onChange={e => setQuantity(e.target.value)}
                         />
                         <button onClick={updateQuantity}>Update</button>
                     </div>

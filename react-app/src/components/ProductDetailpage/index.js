@@ -20,7 +20,7 @@ function ProductDetailPage() {
     const product = useSelector(state => state.products[+id]);
     const reviews = useSelector(state => Object.values(state.reviews));
 
-    const [quantity, setQuantity] = useState(0);
+    const [quantity, setQuantity] = useState(1);
     const [errors, setErrors] = useState([]);
     const [isLoaded, setIsLoaded] = useState(false);
     const [showModal, setShowModal] = useState(false);
@@ -44,8 +44,17 @@ function ProductDetailPage() {
     }, [dispatch, id]);
 
     const decreaseQuantity = () => {
-        if (quantity > 0) setQuantity(quantity - 1);
+        if (typeof quantity !== 'number') setQuantity(1)
+        if (quantity > 1) setQuantity(quantity - 1);
         else return;
+    }
+
+    const increaseQuantity = () => {
+        if (quantity === '') setQuantity(1)
+        else if (typeof quantity !== 'number') setQuantity(parseInt(quantity))
+        else if (quantity >= 99) setQuantity(99);
+        else if (quantity < 1) setQuantity(1)
+        else setQuantity(quantity + 1);
     }
 
     const addItem = async e => {
@@ -123,8 +132,8 @@ function ProductDetailPage() {
                             </div>
                             <div className='detail-page-purchase-quantity'>
                                 <button onClick={decreaseQuantity}>-</button>
-                                <input type="number" value={quantity} min="0" max='99' step="1" onChange={e => setQuantity(parseInt(e.target.value))} />
-                                <button onClick={() => setQuantity(quantity + 1)}>+</button>
+                                <input type="number" value={quantity} min="1" max='99' step="1" onChange={e => setQuantity(e.target.value)} />
+                                <button onClick={increaseQuantity}>+</button>
                             </div>
                             <button className='add-to-cart-btn' onClick={addItem}>ADD TO CART</button>
                             {showModal && (

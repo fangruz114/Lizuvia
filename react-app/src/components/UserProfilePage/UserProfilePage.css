@@ -28,10 +28,16 @@
     border-right: 1px solid rgb(1, 1, 1);
 }
 
-.user-profile-nav a {
+.user-profile-nav a,
+.user-profile-nav p {
     padding-bottom: 1.25rem;
     font-size: 14px;
     overflow-wrap: anywhere;
+}
+
+.user-profile-nav p {
+    font-weight: bold;
+    font-size: 16px;
 }
 
 .user-profile-nav a:hover {

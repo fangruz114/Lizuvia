@@ -30,7 +30,7 @@ function OrderHistoryPage() {
                     <p>You can always place a second order for any additional items you want.</p>
                 </div>
                 <div className='order-history-order-list'>
-                    {orders && Object.values(orders).map(order => (
+                    {orders && Object.values(orders).sort((a, b) => b.id - a.id).map(order => (
                         <div key={order.id} className='order-history-ind-order'>
                             <div className='order-history-ind-order-info'>
                                 <div className='order-history-ind-number-date'>
