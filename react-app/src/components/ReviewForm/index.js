@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { useHistory } from 'react-router-dom';
+import { useHistory, Link } from 'react-router-dom';
 import { addReview, editReview } from '../../store/review';
 import { getUserReviews } from '../../store/review';
 import StarRatings from 'react-star-ratings';
@@ -59,7 +59,7 @@ function ReviewForm({ onClose, review, product }) {
                             <i className="fa-solid fa-xmark"></i>
                         </button>
                     </div>
-                    <p className='cancel-order-confirm-message'>You already submitted a review for this product. Thanks!</p>
+                    <p className='cancel-order-confirm-message'>You already submitted a review for this product. Please go to <span><Link to='/reviews'>your reviews page</Link></span> to make a review update. Thanks!</p>
                     <div className='cancel-order-confirm-btns'>
                         <button className='cancel-order-cancel-btn' onClick={onClose}>CLOSE</button>
                     </div>

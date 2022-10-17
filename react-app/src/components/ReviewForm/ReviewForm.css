@@ -103,3 +103,7 @@
     justify-content: center;
     cursor: pointer;
 }
+
+.cancel-order-confirm-message span a {
+    font-weight: bold;
+}
